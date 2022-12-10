@@ -23,7 +23,7 @@ const App = () => {
       <Header />
       <Login />
       <TrybeCoins />
-      {/* <Game crashTime={5000} betValue={1000} callback={handleGame}></Game> */}
+      <Game crashTime={5000} betValue={1000} callback={handleGame}></Game>
     </div>
   )
 }
