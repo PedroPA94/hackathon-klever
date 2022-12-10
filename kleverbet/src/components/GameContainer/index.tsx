@@ -4,7 +4,6 @@ import GameControl from '../GameControl';
 import IhandleGameArgs from '../../interfaces/handleGameArgs';
 import './GameContainer.css';
 
-
 const GameContainer = () => {
   const [betValue, setBetValue] = useState<number | null>(null);
 
@@ -21,7 +20,7 @@ const GameContainer = () => {
 
   return (
     <div className='game-container'>
-      <GameControl callback={ setBetValue }/>
+      <GameControl setBetValue={ setBetValue }/>
       { betValue ? <Game crashTime={ 5000 } betValue={ betValue } callback={ handleGame } /> : <p>faça uma aposta</p>}
     </div>
   )
