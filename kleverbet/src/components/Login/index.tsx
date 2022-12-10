@@ -7,7 +7,7 @@ const testNetProvider: IProvider = {
   api: 'https://api.testnet.klever.finance',
 };
 
-export default function Login () {
+const Login = (): React.ReactElement => {
   const [address, setAddress] = useState<undefined | string>(undefined)
   const [ walletBalance ] = useWalletBalance(address)
 
@@ -34,3 +34,5 @@ export default function Login () {
     </>
   )
 }
+
+export default Login;
