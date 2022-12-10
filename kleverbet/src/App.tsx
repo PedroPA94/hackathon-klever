@@ -11,7 +11,6 @@ const App = () => {
     <div className="App">
       <Header />
       <GameContainer />
-      <Login />
       <TrybeCoins containerDisplay={true} />
       <Leaderboard />
     </div>

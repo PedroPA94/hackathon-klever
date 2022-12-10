@@ -74,6 +74,7 @@
   padding: 8px;
   border-radius: 4px;
   width: 250px;
+  cursor: pointer;
 }
 
 .trybecoins__transaction_box button:nth-of-type(2) {

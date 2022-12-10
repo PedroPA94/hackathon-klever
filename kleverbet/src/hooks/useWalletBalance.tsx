@@ -6,13 +6,13 @@ const fetchWalletBalance = async (walletAddress: string | undefined): Promise<nu
   return result.data.account.balance;
 }
 
-const useWalletBalance = (walletAddress: string | undefined): (number | undefined)[] => {
-  const { data: balance } = useQuery('balance', () => fetchWalletBalance(walletAddress), 
+const useWalletBalance = (walletAddress: string | undefined): (number | undefined | boolean)[] => {
+  const { data: balance, isLoading, isRefetching } = useQuery('balance', () => fetchWalletBalance(walletAddress), 
     {
        enabled: !!walletAddress,
        select: (data) => data / 1000000
     })
-  return [ balance ]
+  return [ balance, isLoading, isRefetching ]
 }
 
 export default useWalletBalance;
