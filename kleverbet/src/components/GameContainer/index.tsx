@@ -4,25 +4,35 @@ import GameControl from '../GameControl';
 import IhandleGameArgs from '../../interfaces/handleGameArgs';
 import './GameContainer.css';
 
-
 const GameContainer = () => {
-  const [betValue, setBetValue] = useState<number | null>(null);
+  const [betValue, setBetValue] = useState(0);
+  const [isGameRunning, setIsGameRunning] = useState(false);
+  const [crashTime, setCrashTime] = useState(0);
 
   const handleGame = ({ type, payload }: IhandleGameArgs) => {
     switch(type) {
       case 'WON':
         console.log('The user won ', payload.value, ' KLVR with multiplier ', payload.multiplier);
+        setIsGameRunning(false);
         break;
       case 'LOSS':
         console.log('The user lost', payload.value, 'KVLR with multiplier ', payload.multiplier);
+        setIsGameRunning(false);
         break;
     }
   }
 
+  const startGame = (payload: number) => {
+    const randomCrashTime = Math.round(Math.random() * 5)*1000;
+    setBetValue(payload);
+    setIsGameRunning(true);
+    setCrashTime(randomCrashTime);
+  }
+
   return (
     <div className='game-container'>
-      <GameControl callback={ setBetValue }/>
-      { betValue ? <Game crashTime={ 5000 } betValue={ betValue } callback={ handleGame } /> : <p>faça uma aposta</p>}
+      <GameControl callback={ startGame }/>
+      <Game crashTime={ crashTime } betValue={ betValue } callback={ handleGame } isGameRunning={ isGameRunning } />
     </div>
   )
 }

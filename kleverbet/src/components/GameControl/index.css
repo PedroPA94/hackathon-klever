@@ -5,8 +5,9 @@
   max-width: 350px;
   background-color: var(--background);
   font-family: var(--font);
-  height: 500px;
-  padding: 1rem;
+  height: 700px;
+  padding: 1.5rem;
+  border-radius: 10px;
 }
 
 .form-container__info-bar {
