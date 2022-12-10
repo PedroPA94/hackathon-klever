@@ -3,6 +3,8 @@ import Header from './components/Header';
 import './App.css';
 import Game from './components/Game/';
 import IhandleGameArgs from './interfaces/handleGameArgs';
+import TrybeCoins from './components/TrybeCoins';
+import Login from './components/Login';
 
 const App = () => {
   const handleGame = ({ type, payload }: IhandleGameArgs) => {
@@ -19,7 +21,9 @@ const App = () => {
   return (
     <div className="App">
       <Header />
-      <Game crashTime={5000} betValue={1000} callback={handleGame}></Game>
+      <Login />
+      <TrybeCoins />
+      {/* <Game crashTime={5000} betValue={1000} callback={handleGame}></Game> */}
     </div>
   )
 }
