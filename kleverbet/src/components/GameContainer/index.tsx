@@ -32,7 +32,7 @@ const GameContainer = () => {
 
   return (
     <div className='game-container'>
-      <GameControl callback={ startGame }/>
+      <GameControl setBetValue={ startGame }/>
       <Game crashTime={ crashTime } betValue={ betValue } callback={ handleGame } isGameRunning={ isGameRunning } />
     </div>
   )

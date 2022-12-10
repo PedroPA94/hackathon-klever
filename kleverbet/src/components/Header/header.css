@@ -51,13 +51,13 @@
   margin-right: 30px;
 }
 
-.nav button {
+.nav > div > button {
   background-color: transparent;
   color: white;
   border: none;
 }
 
-.nav button:hover {
+.nav > div > button:hover {
   cursor: pointer;
   color: var(--primary-light);
   transition-duration: 0.3s;
@@ -69,13 +69,9 @@
   transition-duration: 0.3s;
 }
 
-.login-button {
-  font-size: 1rem;
-  font-family: var(--font);
-  letter-spacing: 0.05rem;
-}
-
 .options-nav {
+  border: solid 2px var(--white);
+  border-radius: 5px;
   display: flex;
   justify-content: space-around;
   align-items: center;

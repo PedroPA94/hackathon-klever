@@ -1,5 +1,6 @@
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { removeTrybeCoins } from '../../utils/trybeCoinsTransaction';
 import './index.css'
 
 type Inputs = {
@@ -7,10 +8,10 @@ type Inputs = {
 }
 
 interface GameControlProps {
-  callback(args: number): void;
+  setBetValue(args: number): void;
 }
 
-const GameControl = ({ callback }: GameControlProps) => {
+const GameControl = ({ setBetValue }: GameControlProps) => {
   const { register, handleSubmit, formState: { errors, isValid }, setValue, getValues } = useForm<Inputs>({
     defaultValues: {
       betValue: 0,
@@ -27,7 +28,10 @@ const GameControl = ({ callback }: GameControlProps) => {
     setValue('betValue', Math.floor(betValue / 2))
   }
   
-  const onSubmit: SubmitHandler<Inputs> = (data) => callback(data.betValue);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    setBetValue(data.betValue);
+    removeTrybeCoins(data.betValue);
+  };
 
   return (
     <form onSubmit={ handleSubmit(onSubmit) } className="form-container" >

@@ -1,30 +1,34 @@
 import React, { ChangeEvent, ReactEventHandler, useState } from 'react'
+import Login from '../Login';
+import TrybeCoins from '../TrybeCoins';
 import './header.css';
 
 export default function Header() {
-  const [currencyValue, setcurrencyValue] = useState("USD");
+  const [currencyValue, setcurrencyValue] = useState("KLV");
   const [showOptions, setShowOptions] = useState(false);
+  const [containerDisplay, setContainerDisplay] = useState(false);
 
   const toggleOptions = () => {
     setShowOptions(!showOptions);
   }
 
+  const showBuyTrybeCoins = () => {
+    setContainerDisplay(true);
+  }
+
   return (
     <header className="header">
-
       <div className="logo">
-
         <img src="https://s2.coinmarketcap.com/static/img/coins/200x200/6724.png" alt="Logo da klev" />
-
         <h2>Kleverbet</h2>
-
       </div>
-
       <div className="nav">
         <a href="https://klever.io/en" target="_blank">Download the Exchange App</a>
-        <button className="login-button">Login</button>
+        <Login />
+        <span  onClick={showBuyTrybeCoins} >Buy TrybeCoins</span>
+        <TrybeCoins containerDisplay={containerDisplay} setContainerDisplay={setContainerDisplay}/>
         <div>
-          <button onClick={ () => toggleOptions()}>PTBR | { currencyValue } 
+          <button onClick={ () => toggleOptions()}>EN | { currencyValue } 
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  className="bi bi-chevron-down" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"
             className="open-btn"/>
@@ -52,9 +56,9 @@ export default function Header() {
           <h3>Currency</h3>
           <p>Choose a currency</p>
           <div className='buttons'>
-            <button onClick={() => setcurrencyValue('USD')}>USD</button>
+            <button onClick={() => setcurrencyValue('KLV')}>KLV</button>
             <button onClick={() => setcurrencyValue('BRL')}>BRL</button>
-            <button onClick={() => setcurrencyValue('BTC')}>BTC</button>
+            <button onClick={() => setcurrencyValue('BTC')}>USD</button>
           </div>
         </div>
       </nav>

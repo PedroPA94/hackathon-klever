@@ -13,6 +13,7 @@ import {
 import { Chart } from "react-chartjs-2";
 import IhandleGameArgs from '../../interfaces/handleGameArgs';
 import './Game.css';
+import { addTrybeCoins } from '../../utils/trybeCoinsTransaction';
 
 ChartJS.register(
   CategoryScale,
@@ -54,6 +55,7 @@ const Game = ({ crashTime, betValue, callback, isGameRunning }: GameProps ): Rea
   const [chartData, setChartData] = useState<ChartData<"bar">>({
     datasets: []
   });
+  const [stopBtnDisabled, setStopBtnDisabled] = useState(false)
 
   const stopCounter = () => {
     clearInterval(intervalRef.current);
@@ -100,8 +102,10 @@ const Game = ({ crashTime, betValue, callback, isGameRunning }: GameProps ): Rea
   }, [gameState.timer]);
 
   const stopBet = (): void => {
+    setStopBtnDisabled(true)
     stopCounter();
     const prizeValue = gameState.multiplier * betValue;
+    addTrybeCoins(prizeValue)
     callback({ type: 'WON', payload: { multiplier: gameState.multiplier, value: prizeValue }});
   }
 
