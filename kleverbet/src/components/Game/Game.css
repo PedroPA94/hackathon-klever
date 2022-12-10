@@ -1,7 +1,6 @@
 @import '../../App.css';
 
 .canvas {
-  background-color: #171833;
   color: #9c58db10;
   max-height: 700px;
   width: 100%;
@@ -14,6 +13,9 @@
   padding: 2rem;
   color: var(--white);
   gap: 1rem;
+  background-color: #171833;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 5%);
 }
 
 .stop-game-btn {
