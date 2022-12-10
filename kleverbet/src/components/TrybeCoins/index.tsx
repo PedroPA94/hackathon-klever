@@ -9,7 +9,7 @@ const TrybeCoins = () => {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    trybeCoinsTransaction.buyTrybeCoins(trybeCoins);
+    trybeCoinsTransaction.addTrybeCoins(trybeCoins);
   }, [trybeCoins])
 
   const convertKlvToTrybeCoins = (amount: number): number => {

@@ -1,11 +1,23 @@
-const buyTrybeCoins = (trybeCoins: number) => {
+const getTrybeCoins = () => {
   const trybeCoinsWallet = localStorage.getItem('trybecoins');
   if (!trybeCoinsWallet) {
-    localStorage.setItem('trybecoins', JSON.stringify(trybeCoins));
+    localStorage.setItem('trybecoins', '0');
+    return 0;
   } else {
-    const newValue = JSON.parse(trybeCoinsWallet) + trybeCoins;
-    localStorage.setItem('trybecoins', JSON.stringify(newValue));
+    return Number(trybeCoinsWallet);
   }
 }
 
-export { buyTrybeCoins }
+const addTrybeCoins = (trybeCoins: number) => {
+  const trybeCoinsStorage = getTrybeCoins();
+  const newValue = JSON.stringify(trybeCoinsStorage + trybeCoins);
+  localStorage.setItem('trybecoins', newValue);
+}
+
+const removeTrybeCoins = (trybeCoins: number) => {
+  const trybeCoinsStorage = getTrybeCoins();
+  const newValue = JSON.stringify(trybeCoinsStorage - trybeCoins);
+  localStorage.setItem('trybecoins', newValue);
+}
+
+export { addTrybeCoins, removeTrybeCoins }
