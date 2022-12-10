@@ -28,6 +28,7 @@ ChartJS.register(
 interface GameProps {
   crashTime: number,
   betValue: number,
+  isGameRunning: boolean,
   callback(args: IhandleGameArgs): void
 }
 
@@ -40,7 +41,7 @@ function getGradient(ctx: CanvasRenderingContext2D, area: ChartArea) {
   return gradient;
 }
 
-const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement => {
+const Game = ({ crashTime, betValue, callback, isGameRunning }: GameProps ): React.ReactElement => {
   const [gameState, setGameState] = useState({ 
     multiplier: 1, 
     timer: 0, 
@@ -59,12 +60,24 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
   const stopCounter = () => {
     clearInterval(intervalRef.current);
     intervalRef.current = 0;
+    setTimeout(() => {
+      setGameState(() => (
+        { 
+          multiplier: 1, 
+          timer: 0, 
+          previous: {
+            multipliers: [1],
+            timers: [0]
+          }
+        }
+      ));
+    }, 3000);
   }
 
   useEffect(() => {
-    
+    if (!isGameRunning) return
     intervalRef.current = setInterval(() => {
-      setGameState(({ multiplier, timer, previous }) => (
+    setGameState(({ multiplier, timer, previous }) => (
         { 
           multiplier: multiplier * 1.02,
           timer: timer + 100,
@@ -77,7 +90,7 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
     }, 300);
 
     return () => stopCounter();
-  }, []);
+  }, [isGameRunning]);
 
   useEffect(() => {
     const loseGame = (): void => {
@@ -168,7 +181,7 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
         <h2>{`${gameState.multiplier.toFixed(2)} X`}</h2>
       </div>
       <Chart ref={chartRef} type="line" data={chartData} options={options} className='canvas' />
-      <button onClick={() => stopBet()} className="stop-game-btn" disabled={stopBtnDisabled}>Stop</button>
+      <button onClick={stopBet} className="stop-game-btn" disabled={ !isGameRunning }>Stop</button>
     </div>
   );
 }
