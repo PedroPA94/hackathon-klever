@@ -2,7 +2,7 @@ import './App.css';
 import Game from './components/Game';
 import IhandleGameArgs from './interfaces/handleGameArgs';
 
-function App() {
+const App = () => {
   const handleGame = ({ type, payload }: IhandleGameArgs) => {
     switch(type) {
       case 'WON':
