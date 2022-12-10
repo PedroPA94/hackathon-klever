@@ -60,6 +60,7 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
   }
 
   useEffect(() => {
+    
     intervalRef.current = setInterval(() => {
       setGameState(({ multiplier, timer, previous }) => (
         { 
@@ -77,6 +78,11 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
   }, []);
 
   useEffect(() => {
+    const loseGame = (): void => {
+      stopCounter();
+      callback({ type: 'LOSS', payload: { multiplier: gameState.multiplier, value: betValue }});
+    }
+    
     if (gameState.timer >= crashTime) loseGame();
   }, [gameState.timer]);
 
@@ -84,11 +90,6 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
     stopCounter();
     const prizeValue = gameState.multiplier * betValue;
     callback({ type: 'WON', payload: { multiplier: gameState.multiplier, value: prizeValue }});
-  }
-
-  const loseGame = (): void => {
-    stopCounter();
-    callback({ type: 'LOSS', payload: { multiplier: gameState.multiplier, value: betValue }});
   }
 
   const data = useMemo(
