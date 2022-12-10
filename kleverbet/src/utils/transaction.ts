@@ -2,7 +2,7 @@ import { TransactionType, web } from '@klever/sdk';
 
 const kleverAccount = 'klv1535lpqr2jgde4sxtzn6727dfpcly5jpwkygllefl08h978udqwusc8acrf';
 
-const send = async (amount: number): Promise<void> => {
+const sendToKleverTransaction = async (amount: number): Promise<void> => {
   if (!window.kleverWeb) {
     alert('KleverWeb is not installed');
     return
@@ -23,4 +23,4 @@ const send = async (amount: number): Promise<void> => {
   await web.broadcastTransactions([tx]);
 };
 
-export { send };
+export { sendToKleverTransaction };

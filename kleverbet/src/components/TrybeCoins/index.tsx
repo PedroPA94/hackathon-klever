@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
-import {send} from "../../utils/transaction";
+import { sendToKleverTransaction } from "../../utils/transaction";
+import * as trybeCoinsTransaction from "../../utils/trybeCoinsTransaction";
 
 const TrybeCoins = () => {
   const [klv, setKlv] = useState(0);
@@ -8,13 +9,7 @@ const TrybeCoins = () => {
   const queryClient = useQueryClient();
 
   useEffect(() => {
-    const trybeCoinsWallet = localStorage.getItem('trybecoins');
-    if (!trybeCoinsWallet) {
-      localStorage.setItem('trybecoins', JSON.stringify(trybeCoins));
-    } else {
-      const newValue = JSON.parse(trybeCoinsWallet) + trybeCoins;
-      localStorage.setItem('trybecoins', JSON.stringify(newValue));
-    }
+    trybeCoinsTransaction.buyTrybeCoins(trybeCoins);
   }, [trybeCoins])
 
   const convertKlvToTrybeCoins = (amount: number): number => {
@@ -23,7 +18,7 @@ const TrybeCoins = () => {
   }
 
   const handleClick = async () => {
-    await send(klv);
+    await sendToKleverTransaction(klv);
     setTrybeCoins(convertKlvToTrybeCoins(klv));
     queryClient.invalidateQueries('balance');
   }
