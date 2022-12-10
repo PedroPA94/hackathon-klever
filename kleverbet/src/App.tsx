@@ -1,3 +1,5 @@
+import React, { useState } from 'react'
+import Header from './components/header/Header';
 import './App.css';
 import Game from './components/Game';
 import IhandleGameArgs from './interfaces/handleGameArgs';
@@ -16,6 +18,7 @@ const App = () => {
 
   return (
     <div className="App">
+      <Header />
       <Game crashTime={5000} betValue={1000} callback={handleGame}></Game>
     </div>
   )
