@@ -3,6 +3,7 @@ import Header from './components/header/Header';
 import './App.css';
 import Game from './components/Game';
 import IhandleGameArgs from './interfaces/handleGameArgs';
+import Leaderboard from './components/Leaderboard/Leaderboard';
 
 const App = () => {
   const handleGame = ({ type, payload }: IhandleGameArgs) => {
@@ -20,6 +21,7 @@ const App = () => {
     <div className="App">
       <Header />
       <Game crashTime={5000} betValue={1000} callback={handleGame}></Game>
+      <Leaderboard />
     </div>
   )
 }
