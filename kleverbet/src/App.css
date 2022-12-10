@@ -14,7 +14,7 @@
 
   --secondary: #AA33B5;
 
-  --background: #171833;
+  --background: #14152C;
 
   --white: #DCDCE0;
 
@@ -23,4 +23,13 @@
   --green: #3A9A7A;
 
   --gradient: linear-gradient(114.7deg, #dc3f89 31.5%, #903edd 100%);
+}
+
+.App {
+  background-color: var(--background);
+  width: 100%;
+}
+
+.game-container {
+  padding: 1rem;
 }
