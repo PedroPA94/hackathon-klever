@@ -7,9 +7,10 @@ import "./TrybeCoins.css";
 
 interface TrybeCoinsProps {
   containerDisplay: boolean,
+  setContainerDisplay: Function,
 }
 
-const TrybeCoins = ({ containerDisplay }: TrybeCoinsProps) => {
+const TrybeCoins = ({ containerDisplay, setContainerDisplay }: TrybeCoinsProps) => {
   const [klv, setKlv] = useState(0);
   const [trybeCoins, setTrybeCoins] = useState(0);
   const queryClient = useQueryClient();
@@ -30,7 +31,7 @@ const TrybeCoins = ({ containerDisplay }: TrybeCoinsProps) => {
   }
 
   const closePopUp = () => {
-    // containerDisplay = false;
+    setContainerDisplay(false);
   }
 
   return (
