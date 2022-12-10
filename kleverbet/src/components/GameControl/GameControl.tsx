@@ -28,7 +28,7 @@ const GameControl = () => {
     <form onSubmit={ handleSubmit(onSubmit) }>
       <span>0.00</span>
       <input type="text" { ...register("betValue", { required: true }) } />
-      { errors.betValue && <span>This field is required</span> }
+      { errors.betValue && <span>This field is required!</span> }
       <button type="button" onClick={ doubleBetValue }>2X</button>
       <button type="button" onClick={ halveBetValue }>1/2</button>
       <button type="submit" disabled={ !isValid } >BET</button>
