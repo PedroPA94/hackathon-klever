@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import IhandleGameArgs from '../interfaces/handleGameArgs';
+import IhandleGameArgs from '../../interfaces/handleGameArgs';
 
 interface GameProps {
   crashTime: number,
