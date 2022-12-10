@@ -3,9 +3,9 @@ import { checkIcon, xIcon } from '../icons';
 import './Leaderboard.css';
 
 const Leaderboard = (): React.ReactElement => {
-  const [scoreboard, setScoreboard] = useState<iScoreboard[]>([])
+  const [scoreboard, setScoreboard] = useState<IScoreboard[]>([])
 
-  const mock: iScoreboard[] = [{
+  const mock: IScoreboard[] = [{
     walletAddress: 1,
     id: 1,
     bet: 1000,
@@ -55,7 +55,7 @@ const Leaderboard = (): React.ReactElement => {
     won: false,
   }]
 
-  interface iScoreboard {
+  interface IScoreboard {
     walletAddress: number,
     id: number,
     bet: number,
@@ -75,11 +75,16 @@ const Leaderboard = (): React.ReactElement => {
     return xIcon;
   }
 
+  const profitOrLossCalculator = (score: IScoreboard) => {
+    if(score.won) return score.bet * score.multiplier;
+    return -score.bet;
+  }
+
   useEffect(() => {
     const scoreboardJson: string | null = (localStorage.getItem('leaderboard'));
     setScoreboard(mock);
     if(scoreboardJson) {
-      const parsedScoreboard: iScoreboard[] = JSON.parse(scoreboardJson);
+      const parsedScoreboard: IScoreboard[] = JSON.parse(scoreboardJson);
       setScoreboard(parsedScoreboard);
     }
 
@@ -89,14 +94,15 @@ const Leaderboard = (): React.ReactElement => {
   return (
     <section className="leaderboard-section">
       <div className="leaderboard-header">
-        <p><strong>Você</strong> apostou {scoreboard.length} vezes</p>
-        <p>Lucro total: <strong>{profitCalculator()} TC</strong></p>
+        <p><strong>You</strong> bet {scoreboard.length} times</p>
+        <p>Total Profit: <strong>{profitCalculator()} TC</strong></p>
       </div>
       <table className="table">
         <tr className="table-header-row">
           <th>Bet</th>
           <th>Multiplier</th>
           <th>Won</th>
+          <th>Profit/Loss</th>
         </tr>
         { scoreboard ? (
           scoreboard.map((score) => 
@@ -104,6 +110,7 @@ const Leaderboard = (): React.ReactElement => {
             <td>{ score.bet } TC</td>
             <td>{ score.multiplier }x</td>
             <td>{ winOrLoseIcon(score.won) }</td>
+            <td className={score.won ? "td-profit" : "td-loss"}>{ profitOrLossCalculator(score) } TC</td>
           </tr>)
         ): <></>}
       </table>
