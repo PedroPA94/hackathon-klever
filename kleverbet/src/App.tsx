@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import Header from './components/Header';
 import './App.css';
 import Game from './components/Game/';
@@ -26,7 +26,7 @@ const App = () => {
       <Leaderboard />
       <div className='game-container'>
         {/* <GameControl /> */}
-        <Game crashTime={10000} betValue={1000} callback={handleGame} />
+        <Game crashTime={5000} betValue={1000} callback={handleGame} />
       </div>
     </div>
   )
