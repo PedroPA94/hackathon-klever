@@ -12,7 +12,7 @@ const App = () => {
       <Header />
       <GameContainer />
       <Login />
-      <TrybeCoins />
+      <TrybeCoins containerDisplay={true} />
       <Leaderboard />
     </div>
   )

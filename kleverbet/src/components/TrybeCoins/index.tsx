@@ -2,8 +2,14 @@ import { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 import { sendToKleverTransaction } from "../../utils/transaction";
 import * as trybeCoinsTransaction from "../../utils/trybeCoinsTransaction";
+import { BiTransferAlt } from 'react-icons/bi'
+import "./TrybeCoins.css";
 
-const TrybeCoins = () => {
+interface TrybeCoinsProps {
+  containerDisplay: boolean,
+}
+
+const TrybeCoins = ({ containerDisplay }: TrybeCoinsProps) => {
   const [klv, setKlv] = useState(0);
   const [trybeCoins, setTrybeCoins] = useState(0);
   const queryClient = useQueryClient();
@@ -23,11 +29,28 @@ const TrybeCoins = () => {
     queryClient.invalidateQueries('balance');
   }
 
+  const closePopUp = () => {
+    // containerDisplay = false;
+  }
+
   return (
-    <div>
-      <input type='number' onChange={({target}) => setKlv(Number(target.value))} />
-      <span>{ convertKlvToTrybeCoins(klv) }</span>
-      <button onClick={handleClick}>Buy TrybeCoins</button>
+    <div className={`trybecoins__container__${containerDisplay}`} >
+      <div className="trybecoins__transaction_box">
+        <div className="trybecoins__transaction_example">
+          <span>1x KLV</span>
+          <BiTransferAlt />
+          <span>100x TrybeCoins</span>
+        </div>
+        <div className="trybecoins__transaction_values">
+          <span>KLV:</span>
+          <input type='number' onChange={({target}) => setKlv(Number(target.value))} />
+          <BiTransferAlt />
+          <span>{ `TrybeCoins: ${convertKlvToTrybeCoins(klv)}` }</span>
+        </div>
+        <button onClick={handleClick}>Buy TrybeCoins</button>
+        <button onClick={closePopUp}>Voltar</button>
+      </div>
+
     </div>
   )
 }
