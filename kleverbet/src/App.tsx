@@ -3,7 +3,9 @@ import Header from './components/Header';
 import './App.css';
 import Game from './components/Game/';
 import IhandleGameArgs from './interfaces/handleGameArgs';
+import Leaderboard from './components/Leaderboard/Leaderboard';
 import GameControl from './components/GameControl';
+
 
 const App = () => {
   const handleGame = ({ type, payload }: IhandleGameArgs) => {
@@ -20,6 +22,8 @@ const App = () => {
   return (
     <div className="App">
       <Header />
+      <Game crashTime={5000} betValue={1000} callback={handleGame}></Game>
+      <Leaderboard />
       <div className='game-container'>
         {/* <GameControl /> */}
         <Game crashTime={10000} betValue={1000} callback={handleGame} />

@@ -1,0 +1,88 @@
+:root {
+  --font: 'Montserrat', sans-serif;
+
+  --primary: #814FEF;
+
+  --primary-light: #aa33b5;
+
+  --secondary: #AA33B5;
+
+  --background: #171833;
+
+  --white: #DCDCE0;
+
+  --red: #E85255;
+
+  --green: #3A9A7A;
+
+  --gradient: linear-gradient(114.7deg, #dc3f89 31.5%, #903edd 100%);
+
+  --grey-light: #1d2730;
+
+  --grey-dark: #0F1923;
+}
+
+.leaderboard-section {
+  background-color: var(--grey-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--white);
+  font-family: var(--font);
+}
+
+.leaderboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px 50px;
+  width: 100%;
+}
+
+.table {
+  align-items: center;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  padding: 50px 100px;
+  width: 90vw;
+}
+
+.table-header-row {
+  background-color: var(--grey-light);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 20px;
+  padding: 15px;
+  width: 80vw;
+}
+
+.table-content-row {
+  border-bottom: 1px solid grey;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin-top: 20px;
+  padding: 15px;
+  width: 80vw;
+}
+
+.table-content-row td {
+  text-align: center;
+}
+
+.bi-check2 {
+  color: green;
+}
+
+.bi-x {
+  color: red;
+}
+
+.td-profit {
+  color: green;
+}
+
+.td-loss {
+  color: red;
+}
