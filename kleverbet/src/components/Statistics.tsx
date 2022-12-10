@@ -1,8 +1,7 @@
 import React from 'react'
 import IScoreboard from '../interfaces/IScoreboard';
 
-const Statistics = (props: { scoreboard: IScoreboard[]}): React.ReactElement => {
-  const { scoreboard } = props;
+const Statistics = ({ scoreboard }: { scoreboard: IScoreboard[]}): React.ReactElement => {
 
   const getGreaterMultiplier = () => {
     let greaterMultiplier = 0;
