@@ -1,0 +1,25 @@
+.login-button {
+  font-size: 1rem;
+  font-family: var(--font);
+  letter-spacing: 0.05rem;
+}
+
+.spinner {
+    animation: rotate 2s linear infinite;
+}
+
+.wallet-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.klv-icon {
+  width: 15px;
+  border-radius: 50%;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
