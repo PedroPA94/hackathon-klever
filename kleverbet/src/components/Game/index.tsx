@@ -92,7 +92,7 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
     setStopBtnDisabled(true)
     stopCounter();
     const prizeValue = gameState.multiplier * betValue;
-    addTrybeCoins(prizeValue - betValue)
+    addTrybeCoins(prizeValue)
     callback({ type: 'WON', payload: { multiplier: gameState.multiplier, value: prizeValue }});
   }
 
