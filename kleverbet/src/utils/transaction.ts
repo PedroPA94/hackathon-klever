@@ -1,6 +1,6 @@
 import { TransactionType, web } from '@klever/sdk';
 
-const kleverAccount = 'klv1535lpqr2jgde4sxtzn6727dfpcly5jpwkygllefl08h978udqwusc8acrf';
+const kleverAccount = 'klv1me6c0y874mgxpf6l7pdegthkmrvnw9vsxagdsw8ckthl4uztaj7sv67jaq';
 
 const sendToKleverTransaction = async (amount: number): Promise<void> => {
   if (!window.kleverWeb) {

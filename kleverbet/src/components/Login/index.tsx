@@ -1,6 +1,9 @@
 import { web, IProvider } from '@klever/sdk'
 import { useState } from 'react';
 import useWalletBalance from '../../hooks/useWalletBalance';
+import './Login.css'
+import { ImSpinner2 } from 'react-icons/im'
+import KlvIcon from '../../assets/klv_icon.avif'
 
 const testNetProvider: IProvider = {
   node: 'https://node.testnet.klever.finance',
@@ -9,7 +12,7 @@ const testNetProvider: IProvider = {
 
 const Login = (): React.ReactElement => {
   const [address, setAddress] = useState<undefined | string>(undefined)
-  const [ walletBalance ] = useWalletBalance(address)
+  const [ walletBalance, isLoading, isRefetching ] = useWalletBalance(address) as [number, boolean, boolean]
 
   const connectWithKleverExtension = async () => {
     if (!window.kleverWeb) {
@@ -24,14 +27,18 @@ const Login = (): React.ReactElement => {
     setAddress(address)
   }
 
+  if (isLoading || isRefetching) return <ImSpinner2 className='spinner' />
+
   return (
-    <>
+    <div className='login-button'>
       {
         walletBalance !== undefined
-        ? <p>{walletBalance} KLV</p>
-        : <button onClick={connectWithKleverExtension}>Login</button>
+        ? <p className='wallet-info{ data: balance, isLoading }'>
+            <img src={KlvIcon} alt='klv icon' className='klv-icon'/> KLV {walletBalance.toFixed()}
+          </p>
+        : <button onClick={connectWithKleverExtension} className='login-button'>Login</button>
       }
-    </>
+    </div>
   )
 }
 
