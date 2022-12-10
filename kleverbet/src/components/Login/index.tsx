@@ -12,9 +12,10 @@ export default function Login () {
   const [ walletBalance ] = useWalletBalance(address)
 
   const connectWithKleverExtension = async () => {
-    // if (!window.kleverWeb) {
-    //   return 'KleverWeb is not installed';
-    // }
+    if (!window.kleverWeb) {
+      alert('KleverWeb is not installed');
+      return
+    }
 
     web.setProvider(testNetProvider);
     await web.initialize();
