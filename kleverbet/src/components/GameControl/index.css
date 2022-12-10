@@ -1,0 +1,92 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 350px;
+  background-color: var(--background);
+  font-family: var(--font);
+  height: 500px;
+  padding: 1rem;
+}
+
+.form-container__info-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: var(--white);
+  padding-bottom: 1rem;
+  padding: 0 0.2rem;
+}
+
+.bet-amount-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.bet-amount-container__place-bet-amount {
+  all: unset;
+  background-color: var(--white);
+  color: var(--background);
+  text-align: center;
+  font-family: var(--font);
+  font-weight: 700;
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 40%;
+  height: 3.5rem;
+}
+
+.bet-amount-container__bet-option {
+  all: unset;
+  text-align: center;
+  font-family: var(--font);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--background);
+  height: 100%;
+  width: 25%;
+  border-radius: 5px;
+  background-color: rgb(100, 100, 140);
+}
+
+.bet-amount-container__bet-option:hover {
+  background-color: var(--secondary);
+  transition: 0.3s;
+  transition-timing-function: ease-in;
+}
+
+.bet-amount-container__bet-option:active {
+  background-color: var(--red);
+  transition: 0.1s;
+  transition-timing-function: ease-in;
+}
+
+.form-container__cta {
+  all:unset;
+  text-align: center;
+  justify-self: flex-end;
+  font-weight: 900;
+  font-size: 1.5rem;
+  font-family: var(--font);
+  color: var(--white);
+  background-color: var(--red);
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.form-container__cta:active {
+  background-color: var(--white);
+  color: var(--background);
+  transition: 0.1s;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font);
+  gap: 1rem;
+  width: 100%;
+  background-color: var(--background);
+}
