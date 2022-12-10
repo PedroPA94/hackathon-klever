@@ -1,0 +1,40 @@
+@import '../../App.css';
+
+.canvas {
+  color: #9c58db10;
+  max-height: 700px;
+  width: 100%;
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  color: var(--white);
+  gap: 1rem;
+  background-color: #171833;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 5%);
+}
+
+.stop-game-btn {
+  width: 200px;
+  height: 40px;
+  background-color: var(--secondary);
+  border: none;
+  color: var(--white);
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.stop-game-btn:hover {
+  cursor: pointer;
+  opacity: 0.8;
+  transition-duration: 0.3s;
+}
+
+.multiplier-container {
+  font-size: 2rem;
+}
