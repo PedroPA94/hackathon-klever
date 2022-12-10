@@ -177,7 +177,7 @@ const Game = ({ crashTime, betValue, callback, isGameRunning }: GameProps ): Rea
         <h2>{`${gameState.multiplier.toFixed(2)} X`}</h2>
       </div>
       <Chart ref={chartRef} type="line" data={chartData} options={options} className='canvas' />
-      <button onClick={stopBet} className="stop-game-btn">Stop</button>
+      <button onClick={stopBet} className="stop-game-btn" disabled={ !isGameRunning }>Stop</button>
     </div>
   );
 }
