@@ -6,7 +6,15 @@ type Inputs = {
   betValue: number;
 }
 
-const GameControl = () => {
+type BetPayload = {
+  betValue: number;
+}
+
+interface GameControlProps {
+  callback(args: BetPayload):void;
+}
+
+const GameControl = ({ callback }: GameControlProps) => {
   const { register, handleSubmit, formState: { errors, isValid }, setValue, getValues } = useForm<Inputs>({
     defaultValues: {
       betValue: 0,
@@ -23,7 +31,7 @@ const GameControl = () => {
     setValue('betValue', Math.floor(betValue / 2))
   }
   
-  const onSubmit: SubmitHandler<Inputs> = (data) => localStorage.setItem('user', JSON.stringify(data));
+  const onSubmit: SubmitHandler<Inputs> = (data) => callback(data);
 
   return (
     <form onSubmit={ handleSubmit(onSubmit) } className="form-container" >
