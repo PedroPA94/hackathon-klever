@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import Header from './components/header/Header';
+import Header from './components/Header';
 import './App.css';
-import Game from './components/Game';
+import Game from './components/Game/';
 import IhandleGameArgs from './interfaces/handleGameArgs';
 
 const App = () => {
