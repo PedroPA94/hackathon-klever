@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import IScoreboard from '../../interfaces/IScoreboard';
 import { checkIcon, xIcon } from '../icons';
+import Statistics from '../Statistics';
 import './Leaderboard.css';
 
 const Leaderboard = (): React.ReactElement => {
@@ -55,14 +57,6 @@ const Leaderboard = (): React.ReactElement => {
     won: false,
   }]
 
-  interface IScoreboard {
-    walletAddress: number,
-    id: number,
-    bet: number,
-    multiplier: number,
-    won: boolean,
-  }
-
   const profitCalculator = () => {
     return scoreboard.reduce((acc, score) => {
       if(score.won) return acc + (score.bet * score.multiplier);
@@ -95,8 +89,10 @@ const Leaderboard = (): React.ReactElement => {
     <section className="leaderboard-section">
       <div className="leaderboard-header">
         <p><strong>You</strong> bet {scoreboard.length} times</p>
+        <Statistics scoreboard={scoreboard}/>
         <p>Total Profit: <strong>{profitCalculator()} TC</strong></p>
       </div>
+      
       <table className="table">
         <tr className="table-header-row">
           <th>Bet</th>

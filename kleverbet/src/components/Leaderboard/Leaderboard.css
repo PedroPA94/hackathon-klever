@@ -67,6 +67,28 @@
   width: 80vw;
 }
 
+.leaderboard-records {
+  align-self: center;
+  border: 5px solid white;
+  border-radius: 5px;
+  border-image-source: var(--gradient);
+  border-image-slice: 1;
+  text-align: center;
+  margin-right: 50px;
+  padding: 30px 30px;
+  line-height: 2rem;
+}
+
+.leaderboard-records h3 {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.leaderboard-records:hover {
+  cursor: default;
+}
+
 .table-content-row td {
   text-align: center;
 }
