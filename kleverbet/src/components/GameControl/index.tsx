@@ -6,12 +6,8 @@ type Inputs = {
   betValue: number;
 }
 
-type BetPayload = {
-  betValue: number;
-}
-
 interface GameControlProps {
-  callback(args: BetPayload):void;
+  callback(args: number): void;
 }
 
 const GameControl = ({ callback }: GameControlProps) => {
@@ -31,7 +27,7 @@ const GameControl = ({ callback }: GameControlProps) => {
     setValue('betValue', Math.floor(betValue / 2))
   }
   
-  const onSubmit: SubmitHandler<Inputs> = (data) => callback(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => callback(data.betValue);
 
   return (
     <form onSubmit={ handleSubmit(onSubmit) } className="form-container" >

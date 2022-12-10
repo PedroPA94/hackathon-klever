@@ -60,6 +60,7 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
   }
 
   useEffect(() => {
+    
     intervalRef.current = setInterval(() => {
       setGameState(({ multiplier, timer, previous }) => (
         { 
