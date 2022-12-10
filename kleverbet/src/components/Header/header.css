@@ -51,13 +51,13 @@
   margin-right: 30px;
 }
 
-.nav button {
+.nav > div > button {
   background-color: transparent;
   color: white;
   border: none;
 }
 
-.nav button:hover {
+.nav > div > button:hover {
   cursor: pointer;
   color: var(--primary-light);
   transition-duration: 0.3s;
