@@ -1,4 +1,4 @@
-interface handleGameArgs {
+interface IhandleGameArgs {
   type: string,
   payload: {
     value: number,
@@ -6,4 +6,4 @@ interface handleGameArgs {
   },
 }
 
-export default handleGameArgs;
+export default IhandleGameArgs;

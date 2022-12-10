@@ -1,14 +1,21 @@
 import React, { useEffect, useRef, useState } from 'react';
-import handleGameArgs from '../interfaces/handleGameArgs';
+import IhandleGameArgs from '../interfaces/handleGameArgs';
 
 interface GameProps {
   crashTime: number,
   betValue: number,
-  callback(args: handleGameArgs): void
+  callback(args: IhandleGameArgs): void
 }
 
 const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement => {
-  const [gameState, setGameState] = useState({ multiplier: 1, timer: 0 }) // timer in ms
+  const [gameState, setGameState] = useState({ 
+    multiplier: 1, 
+    timer: 0, 
+    previous: {
+      multipliers: [1],
+      timers: [0]
+    }
+  }); // timer in ms
   const intervalRef = useRef(0);
 
   const stopCounter = () => {
@@ -18,8 +25,15 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
 
   useEffect(() => {
     intervalRef.current = setInterval(() => {
-      setGameState(({ multiplier, timer }) => (
-        { multiplier: multiplier + 0.01, timer: timer + 100 }
+      setGameState(({ multiplier, timer, previous }) => (
+        { 
+          multiplier: multiplier + 0.01,
+          timer: timer + 100,
+          previous: {
+            multipliers: [...previous.multipliers, multiplier + 0.01],
+            timers: [...previous.timers, timer + 100]
+          }
+        }
       ))
     }, 100);
 
@@ -45,6 +59,7 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
     <>
       <div>{gameState.multiplier.toFixed(2)}</div>
       <div>{gameState.timer.toFixed(2)}</div>
+      {gameState.previous.multipliers.map((m) => <p>{m}</p>)}
       <button onClick={stopBet}>Stop</button>
     </>
   );

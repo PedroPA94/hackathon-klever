@@ -1,9 +1,9 @@
 import './App.css';
 import Game from './components/Game';
-import handleGameArgs from './interfaces/handleGameArgs';
+import IhandleGameArgs from './interfaces/handleGameArgs';
 
 function App() {
-  const handleGame = ({ type, payload }: handleGameArgs) => {
+  const handleGame = ({ type, payload }: IhandleGameArgs) => {
     switch(type) {
       case 'WON':
         console.log('The user won ', payload.value, ' KLVR with multiplier ', payload.multiplier);
