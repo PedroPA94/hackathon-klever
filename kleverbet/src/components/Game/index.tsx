@@ -13,6 +13,7 @@ import {
 import { Chart } from "react-chartjs-2";
 import IhandleGameArgs from '../../interfaces/handleGameArgs';
 import './Game.css';
+import { addTrybeCoins } from '../../utils/trybeCoinsTransaction';
 
 ChartJS.register(
   CategoryScale,
@@ -53,6 +54,7 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
   const [chartData, setChartData] = useState<ChartData<"bar">>({
     datasets: []
   });
+  const [stopBtnDisabled, setStopBtnDisabled] = useState(false)
 
   const stopCounter = () => {
     clearInterval(intervalRef.current);
@@ -87,8 +89,10 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
   }, [gameState.timer]);
 
   const stopBet = (): void => {
+    setStopBtnDisabled(true)
     stopCounter();
     const prizeValue = gameState.multiplier * betValue;
+    addTrybeCoins(prizeValue - betValue)
     callback({ type: 'WON', payload: { multiplier: gameState.multiplier, value: prizeValue }});
   }
 
@@ -164,7 +168,7 @@ const Game = ({ crashTime, betValue, callback }: GameProps ): React.ReactElement
         <h2>{`${gameState.multiplier.toFixed(2)} X`}</h2>
       </div>
       <Chart ref={chartRef} type="line" data={chartData} options={options} className='canvas' />
-      <button onClick={stopBet} className="stop-game-btn">Stop</button>
+      <button onClick={() => stopBet()} className="stop-game-btn" disabled={stopBtnDisabled}>Stop</button>
     </div>
   );
 }

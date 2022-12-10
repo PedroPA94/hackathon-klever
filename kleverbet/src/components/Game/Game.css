@@ -35,6 +35,11 @@
   transition-duration: 0.3s;
 }
 
+.stop-game-btn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
 .multiplier-container {
   font-size: 2rem;
 }
