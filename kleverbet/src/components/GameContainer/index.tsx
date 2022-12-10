@@ -23,7 +23,8 @@ const GameContainer = () => {
   }
 
   const startGame = (payload: number) => {
-    const randomCrashTime = Math.round(Math.random() * 5)*1000;
+    const maxCrashTime = 5;
+    const randomCrashTime = Math.round(Math.random() * maxCrashTime) * 1000;
     setBetValue(payload);
     setIsGameRunning(true);
     setCrashTime(randomCrashTime);
