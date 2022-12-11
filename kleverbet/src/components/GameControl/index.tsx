@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { getTrybeCoins, removeTrybeCoins } from '../../utils/trybeCoinsTransaction';
 import Login from '../Login';
 import './index.css'
@@ -15,7 +16,7 @@ interface GameControlProps {
 const GameControl = ({ setBetValue }: GameControlProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const { register, handleSubmit, formState: { errors, isValid }, setValue, getValues } = useForm<Inputs>({
+  const { register, handleSubmit, formState: { errors, isValid }, setValue, getValues, setError } = useForm<Inputs>({
     defaultValues: {
       betValue: 0,
     },
@@ -39,6 +40,7 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
   
   const verifyTrybeCoins = (data: number) => {
     const trybeCoins = getTrybeCoins();
+    if (trybeCoins - data <= 0) { toast.error('Insufficient Trybecoins, please make a purchase', { position: 'top-center' }) }
     return (trybeCoins - data) >= 0
   }
 
@@ -50,10 +52,10 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
         </span>
       </div>
       <form onSubmit={ handleSubmit(onSubmit) } className="form-container" >
-        { errors.betValue && <span className='form-validation'>Invalid field</span> }
+        { errors.betValue && <span className='form-validation'>{ `${errors.betValue.message}` }</span> }
         <div className='buttons-container'>
           <div className="bet-amount-container">
-            <input type="text" { ...register("betValue", { required: true, validate: (data) =>  verifyTrybeCoins(data) }) } className="bet-amount-container__place-bet-amount" />
+            <input type="text" { ...register("betValue", { required: 'Put a bet amount', validate: { hasBalance: (data) => verifyTrybeCoins(data) } }) } className="bet-amount-container__place-bet-amount" />
             <button type="button" onClick={ halveBetValue } className="bet-amount-container__bet-option">1/2</button>
             <button type="button" onClick={ doubleBetValue } className="bet-amount-container__bet-option">2X</button>
           </div>

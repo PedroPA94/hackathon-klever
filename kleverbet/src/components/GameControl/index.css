@@ -103,6 +103,10 @@
   transition: 0.1s;
 }
 
+.form-container__cta:disabled {
+  background-color: gray;
+}
+
 .form-validation {
   color: var(--red);
   margin-bottom: 4px;
