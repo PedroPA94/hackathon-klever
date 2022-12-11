@@ -32,22 +32,29 @@
   padding: 2rem;
 }
 
+.table {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  margin-top: 20px;
+  min-height: 700px;
+  padding: 50px 100px;
+  width: 90vw;
+}
+
 .leaderboard-header {
   display: flex;
   align-items: center;
+  font-size: 1.1rem;
   justify-content: space-around;
   padding: 15px 50px;
   width: 100%;
 }
 
-.table {
-  align-items: center;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  font-weight: bold;
-  padding: 50px 100px;
-  width: 90vw;
+.leaderboard-header p {
+  font-weight: 500;
 }
 
 .table-header-row {
@@ -86,6 +93,10 @@
 
 .leaderboard-records:hover {
   cursor: default;
+}
+
+.message-no-game {
+  margin: auto;
 }
 
 .table-content-row td {
