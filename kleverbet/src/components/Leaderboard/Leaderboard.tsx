@@ -44,7 +44,7 @@ const Leaderboard = (_props: LeaderboardProps): React.ReactElement => {
           <th>Won</th>
           <th>Profit/Loss</th>
         </tr>
-        { scoreboard ? (
+        { scoreboard.length ? (
           scoreboard.map((score, index) => 
           <tr className="table-content-row" key={`table-${index}`}>
             <td>{ score.bet } TC</td>
@@ -52,7 +52,7 @@ const Leaderboard = (_props: LeaderboardProps): React.ReactElement => {
             <td>{ winOrLoseIcon(score.won) }</td>
             <td className={score.won ? "td-profit" : "td-loss"}>{ profitOrLossCalculator(score) } TC</td>
           </tr>)
-        ): <h3>No game found</h3>}
+        ): <h3 className="message-no-game">No game found</h3>}
       </table>
     </section>
   )
