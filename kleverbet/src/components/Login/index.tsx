@@ -34,7 +34,7 @@ const Login = ({ setIsLoggedIn }: LoginProps): React.ReactElement => {
     setIsLoggedIn(true);
   }
 
-  if (isLoading || isRefetching) return <ImSpinner2 className='spinner' />
+  if (isLoading || isRefetching) return <div className='login__loading'><ImSpinner2 className='spinner' /></div>
 
   return (
     <div className='login-container'>

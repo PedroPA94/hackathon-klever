@@ -1,3 +1,10 @@
+.login__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+}
+
 .login-container {
   font-size: 1rem;
   font-family: var(--font);
@@ -10,7 +17,7 @@
   background-color: var(--green);
   text-align: center;
   padding: 12px;
-  margin: 8px 0;
+  margin-bottom: 8px;
   border: 0;
   color: var(--white);
   width: 100%;
