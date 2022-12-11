@@ -30,12 +30,6 @@
     animation: rotate 2s linear infinite;
 }
 
-.wallet-info {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-
 .balances-info {
   display: flex;
   flex-direction: column;

@@ -40,10 +40,7 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
   
   const verifyTrybeCoins = (data: number) => {
     const trybeCoins = getTrybeCoins();
-    if ((trybeCoins - data) < 0) {
-      return false;
-    }
-    return true;
+    return (trybeCoins - data) >= 0
   }
 
   return (

@@ -40,7 +40,7 @@ const Login = ({ setIsLoggedIn }: LoginProps): React.ReactElement => {
     <div className='login-container'>
       {
         walletBalance !== undefined
-        ? <div className='balances_info wallet-info{ data: balance, isLoading }'>
+        ? <div className='balances_info'>
             <div className='trybecoins_box'>
               <TrybeCoins containerDisplay={containerDisplay} setContainerDisplay={setContainerDisplay}/>
               <span onClick={ () => setContainerDisplay(true) } >Buy TrybeCoins</span>
