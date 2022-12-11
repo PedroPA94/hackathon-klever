@@ -1,8 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { addTrybeCoins, getTrybeCoins, removeTrybeCoins } from '../../utils/trybeCoinsTransaction';
+import { getTrybeCoins, removeTrybeCoins } from '../../utils/trybeCoinsTransaction';
 import Login from '../Login';
-import { TbCoin } from 'react-icons/tb';
 import './index.css'
 
 type Inputs = {
@@ -15,8 +14,6 @@ interface GameControlProps {
 
 const GameControl = ({ setBetValue }: GameControlProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const trybeCoinsBalance = (getTrybeCoins()).toFixed(2);
 
   const { register, handleSubmit, formState: { errors, isValid }, setValue, getValues } = useForm<Inputs>({
     defaultValues: {
@@ -51,8 +48,6 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
         <span className='form-container__trybecoins'>
         </span>
       </div>
-      <button type='button' onClick={ () => addTrybeCoins(500) } > ADD </button> 
-      {/* test button, delete before deploying to production */}
       <form onSubmit={ handleSubmit(onSubmit) } className="form-container" >
         <div className='buttons-container'>
           <div className="bet-amount-container">

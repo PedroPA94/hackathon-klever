@@ -13,13 +13,7 @@ interface TrybeCoinsProps {
 
 const TrybeCoins = ({ containerDisplay, setContainerDisplay, setUpdateTrybeCoins }: TrybeCoinsProps) => {
   const [klv, setKlv] = useState(0); // klevercoins
-  const [trybeCoins, setTrybeCoins] = useState(0);
   const queryClient = useQueryClient();
-
-  useEffect(() => {
-    trybeCoinsTransaction.addTrybeCoins(trybeCoins);
-    setUpdateTrybeCoins((prevState:boolean) => !prevState)
-  }, [trybeCoins])
 
   const convertKlvToTrybeCoins = (amount: number): number => {
     const trybeCoins = amount * 100;
@@ -28,8 +22,10 @@ const TrybeCoins = ({ containerDisplay, setContainerDisplay, setUpdateTrybeCoins
 
   const handleClick = async () => {
     await sendToKleverTransaction(klv);
-    setTrybeCoins(convertKlvToTrybeCoins(klv));
     queryClient.invalidateQueries('balance');
+    const trybeCoins = convertKlvToTrybeCoins(klv)
+    trybeCoinsTransaction.addTrybeCoins(trybeCoins);
+    setUpdateTrybeCoins((prevState:boolean) => !prevState);
   }
 
   const closePopUp = () => {
@@ -51,7 +47,7 @@ const TrybeCoins = ({ containerDisplay, setContainerDisplay, setUpdateTrybeCoins
           <span>{ `TrybeCoins: ${convertKlvToTrybeCoins(klv)}` }</span>
         </div>
         <button onClick={handleClick}>Buy TrybeCoins</button>
-        <button onClick={closePopUp}>Voltar</button>
+        <button onClick={closePopUp}>Go Back</button>
       </div>
 
     </div>

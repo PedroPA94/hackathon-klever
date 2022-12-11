@@ -58,7 +58,7 @@ const Login = ({ setIsLoggedIn }: LoginProps): React.ReactElement => {
               <img src={KlvIcon} alt='klv icon' className='klv-icon'/> KLV: {walletBalance.toFixed(2)}
             </div>
             <TbCoin />
-            {` TrybeCoins: ${trybeCoinsBalance}`}
+            {`TrybeCoins: ${trybeCoinsBalance}`}
           </div>
         : <button type='button' onClick={connectWithKleverExtension} className='login-button'>Login</button>
       }
