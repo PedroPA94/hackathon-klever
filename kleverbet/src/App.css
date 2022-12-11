@@ -31,10 +31,6 @@
   --grey-dark: #0F1923;
 }
 
-.Toastify__toast-theme--dark {
-  background: var(--primary) !important;
-}
-
 .App {
   background-color: var(--background);
   width: 100%;
