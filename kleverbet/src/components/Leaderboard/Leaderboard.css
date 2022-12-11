@@ -29,6 +29,7 @@
   align-items: center;
   color: var(--white);
   font-family: var(--font);
+  padding: 2rem;
 }
 
 .leaderboard-header {
@@ -53,7 +54,6 @@
   background-color: var(--grey-light);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  margin-top: 20px;
   padding: 15px;
   width: 80vw;
 }
@@ -74,7 +74,6 @@
   border-image-source: var(--gradient);
   border-image-slice: 1;
   text-align: center;
-  margin-right: 50px;
   padding: 30px 30px;
   line-height: 2rem;
 }

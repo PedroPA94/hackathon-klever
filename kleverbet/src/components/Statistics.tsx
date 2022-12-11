@@ -3,17 +3,17 @@ import IScoreboard from '../interfaces/IScoreboard';
 
 const Statistics = ({ scoreboard }: { scoreboard: IScoreboard[]}): React.ReactElement => {
 
-  const getGreaterMultiplier = () => {
+  const getBestMultiplier = () => {
     let greaterMultiplier = 0;
 
     scoreboard.forEach((score) => {
-      if(score.multiplier > greaterMultiplier && score.won) greaterMultiplier = score.bet;
+      if(score.multiplier > greaterMultiplier && score.won) greaterMultiplier = score.multiplier;
     });
 
     return greaterMultiplier;
   }
 
-  const getGreaterProfit = () => {
+  const getBestProfit = () => {
     let greaterProfit = 0;
 
     scoreboard.forEach((score) => {
@@ -48,8 +48,8 @@ const Statistics = ({ scoreboard }: { scoreboard: IScoreboard[]}): React.ReactEl
     <aside className="leaderboard-records">
           <h3>Records</h3>
           <p>Wins in a row: {winsInARowCalculator()}</p>
-          <p>Greater Profit: {getGreaterProfit()}</p>
-          <p>Better Multiplier: {getGreaterMultiplier()}</p>
+          <p>Greatest Profit: {getBestProfit()}</p>
+          <p>Best Multiplier: {getBestMultiplier()}</p>
         </aside>
     )
 }
