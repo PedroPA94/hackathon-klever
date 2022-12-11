@@ -16,7 +16,7 @@ const Leaderboard = (_props: LeaderboardProps): React.ReactElement => {
     return scoreboard.reduce((acc, score) => {
       if(score.won) return acc + (score.bet * score.multiplier);
       return acc - score.bet;
-    }, 0)
+    }, 0).toFixed(2);
   }
 
   const winOrLoseIcon = (won: boolean) => {
@@ -25,7 +25,7 @@ const Leaderboard = (_props: LeaderboardProps): React.ReactElement => {
   }
 
   const profitOrLossCalculator = (score: IScoreboard) => {
-    if(score.won) return score.bet * score.multiplier;
+    if(score.won) return (score.bet * score.multiplier).toFixed(2);
     return -score.bet;
   }
 

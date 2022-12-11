@@ -4,44 +4,47 @@ import IScoreboard from '../interfaces/IScoreboard';
 const Statistics = ({ scoreboard }: { scoreboard: IScoreboard[]}): React.ReactElement => {
 
   const getBestMultiplier = () => {
-    let greaterMultiplier = 0;
+    let bestMultiplier = 0;
 
     scoreboard.forEach((score) => {
-      if(score.multiplier > greaterMultiplier && score.won) greaterMultiplier = score.multiplier;
+      if(score.multiplier > bestMultiplier && score.won) bestMultiplier = score.multiplier;
     });
 
-    return greaterMultiplier;
+    return bestMultiplier;
   }
 
   const getBestProfit = () => {
-    let greaterProfit = 0;
+    let bestProfit = 0;
 
     scoreboard.forEach((score) => {
-      if(score.bet > greaterProfit && score.won) greaterProfit = score.bet;
+      if(score.bet > bestProfit && score.won) bestProfit = score.bet;
     });
 
-    return greaterProfit
+    return bestProfit
   }
 
   const winsInARowCalculator = () => {
     const victoriesInARow: number[] = [];
-    let greaterNumberOfVictories = 0;
+    let biggestNumberOfVictories = 0;
 
-    scoreboard.reduce((acc, score) => {
-      if(score.won) {
+    scoreboard.reduce((acc, score, idx) => {
+      if(score.won && score.won === scoreboard[idx + 1]?.won) {
         return acc + 1
       } else {
+        console.log(victoriesInARow, score.multiplier)
         victoriesInARow.push(acc);
-        return 0;
+        return 1;
       }
 
-    }, 0)
+    }, 1)
+
+    console.log(victoriesInARow);
 
     victoriesInARow.forEach((victories) => {
-      if(victories > greaterNumberOfVictories) greaterNumberOfVictories = victories;
+      if(victories > biggestNumberOfVictories) biggestNumberOfVictories = victories;
     })
 
-    return greaterNumberOfVictories;
+    return biggestNumberOfVictories;
   }
 
   return (
