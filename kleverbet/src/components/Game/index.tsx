@@ -90,7 +90,7 @@ const Game = ({ crashTime, betValue, callback, isGameRunning }: GameProps ): Rea
           }
         }
       ))
-    }, 300);
+    }, 200);
 
     return () => stopCounter();
   }, [isGameRunning]);

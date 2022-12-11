@@ -42,4 +42,5 @@
 
 .multiplier-container {
   font-size: 2rem;
+  font-family: var(--font);
 }
