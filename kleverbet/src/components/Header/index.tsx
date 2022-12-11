@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Login from '../Login';
+import HowToPlay from '../HowToPlay';
 import './header.css';
 
 export default function Header() {
@@ -17,6 +17,8 @@ export default function Header() {
         <h2>Kleverbet</h2>
       </div>
       <div className="nav">
+        <span onClick={() => setContainerDisplay(true)} className="how_to_play">How To Play</span>
+        <HowToPlay containerDisplay={containerDisplay} setContainerDisplay={setContainerDisplay} />
         <a href="https://klever.io/en" target="_blank">Download the Exchange App</a>
         <div>
           <button onClick={ () => toggleOptions()}>EN | { currencyValue } 

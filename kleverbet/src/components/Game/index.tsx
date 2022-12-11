@@ -52,7 +52,7 @@ const Game = ({ crashTime, betValue, callback, isGameRunning }: GameProps ): Rea
       timers: [0]
     }
   }); // timer in ms
-  const intervalRef = useRef(0);
+  const intervalRef = useRef<NodeJS.Timer | number>(0);
   const chartRef = useRef<ChartJS>(null);
   const [chartData, setChartData] = useState<ChartData<"bar">>({
     datasets: []

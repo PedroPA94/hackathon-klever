@@ -4,22 +4,28 @@ import GameControl from '../GameControl';
 import IhandleGameArgs from '../../interfaces/handleGameArgs';
 import './GameContainer.css';
 import Leaderboard from '../Leaderboard/Leaderboard';
+import { toast, ToastOptions } from 'react-toastify';
+
 
 const GameContainer = () => {
   const [betValue, setBetValue] = useState(0);
   const [isGameRunning, setIsGameRunning] = useState(false);
   const [crashTime, setCrashTime] = useState(0);
   const [rerenderKey, setRerenderKey] = useState(0);
+  const toastOptions: ToastOptions = {
+    position: 'bottom-center',
+    theme: 'dark'
+  }
 
   const handleGame = ({ type, payload }: IhandleGameArgs) => {
     switch(type) {
       case 'WON':
-        console.log('The user won ', payload.value, ' KLVR with multiplier ', payload.multiplier);
+        toast.success(`Hooray! You won ${payload.value.toFixed(2)} TC`, toastOptions);
         setIsGameRunning(false);
         setRerenderKey((prev) => prev + 1);
         break;
       case 'LOSS':
-        console.log('The user lost', payload.value, 'KVLR with multiplier ', payload.multiplier);
+        toast.warn(`Too bad! You lost ${payload.value.toFixed(2)} TC`, toastOptions);
         setIsGameRunning(false);
         setRerenderKey((prev) => prev + 1);
         break;

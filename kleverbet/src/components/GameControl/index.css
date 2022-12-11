@@ -13,7 +13,8 @@
   font-family: var(--font);
   height: 530px;
   padding: 1.5rem;
-  border-radius: 10px;
+  border-right: 1px solid var(--white);
+  /* border-radius: 10px; */
 }
 
 .form-container__info-bar {
@@ -90,6 +91,10 @@
   background-color: var(--red);
   padding: 1rem 0;
   width: 100%;
+}
+
+.form-container__cta:hover {
+  cursor: pointer;
 }
 
 .form-container__cta:active {

@@ -16,7 +16,7 @@ const Leaderboard = (_props: LeaderboardProps): React.ReactElement => {
     return scoreboard.reduce((acc, score) => {
       if(score.won) return acc + (score.bet * score.multiplier);
       return acc - score.bet;
-    }, 0)
+    }, 0).toFixed(2);
   }
 
   const winOrLoseIcon = (won: boolean) => {
@@ -25,7 +25,7 @@ const Leaderboard = (_props: LeaderboardProps): React.ReactElement => {
   }
 
   const profitOrLossCalculator = (score: IScoreboard) => {
-    if(score.won) return score.bet * score.multiplier;
+    if(score.won) return (score.bet * score.multiplier).toFixed(2);
     return -score.bet;
   }
 
@@ -38,21 +38,29 @@ const Leaderboard = (_props: LeaderboardProps): React.ReactElement => {
       </div>
       
       <table className="table">
-        <tr className="table-header-row">
-          <th>Bet</th>
-          <th>Multiplier</th>
-          <th>Won</th>
-          <th>Profit/Loss</th>
-        </tr>
-        { scoreboard ? (
-          scoreboard.map((score) => 
-          <tr className="table-content-row">
-            <td>{ score.bet } TC</td>
-            <td>{ score.multiplier }x</td>
-            <td>{ winOrLoseIcon(score.won) }</td>
-            <td className={score.won ? "td-profit" : "td-loss"}>{ profitOrLossCalculator(score) } TC</td>
-          </tr>)
-        ): <></>}
+        <thead>
+          <tr className="table-header-row">
+            <th>Bet</th>
+            <th>Multiplier</th>
+            <th>Won</th>
+            <th>Profit/Loss</th>
+          </tr>
+        </thead>
+        
+        { scoreboard.length ? (
+            <tbody>
+          {
+            scoreboard.map((score, index) => 
+              <tr className="table-content-row" key={`table-${index}`}>
+                <td>{ score.bet } TC</td>
+                <td>{ score.multiplier }x</td>
+                <td>{ winOrLoseIcon(score.won) }</td>
+                <td className={score.won ? "td-profit" : "td-loss"}>{ profitOrLossCalculator(score) } TC</td>
+              </tr>)}
+            </tbody>
+
+        ): <h3 className="message-no-game">No game found</h3>}
+        
       </table>
     </section>
   )

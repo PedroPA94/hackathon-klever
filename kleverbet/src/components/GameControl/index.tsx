@@ -32,7 +32,7 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
   }
   
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    setBetValue(data.betValue);
+    setBetValue(Number(data.betValue));
     removeTrybeCoins(data.betValue);
   };
   
