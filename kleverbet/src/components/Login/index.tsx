@@ -37,13 +37,17 @@ const Login = ({ setIsLoggedIn }: LoginProps): React.ReactElement => {
   if (isLoading || isRefetching) return <ImSpinner2 className='spinner' />
 
   return (
-    <div className='login-button'>
+    <div className='login-container'>
       {
         walletBalance !== undefined
-        ? <div className='wallet-info{ data: balance, isLoading }'>
-            <img src={KlvIcon} alt='klv icon' className='klv-icon'/> KLV {walletBalance.toFixed()}
-            <TrybeCoins containerDisplay={containerDisplay} setContainerDisplay={setContainerDisplay}/>
-            <span onClick={ () => setContainerDisplay(true) } >Buy TrybeCoins</span>
+        ? <div className='balances_info wallet-info{ data: balance, isLoading }'>
+            <div className='trybecoins_box'>
+              <TrybeCoins containerDisplay={containerDisplay} setContainerDisplay={setContainerDisplay}/>
+              <span onClick={ () => setContainerDisplay(true) } >Buy TrybeCoins</span>
+            </div>
+            <div>
+              <img src={KlvIcon} alt='klv icon' className='klv-icon'/> KLV Balance: {walletBalance.toFixed()}
+            </div>
           </div>
         : <button type='button' onClick={connectWithKleverExtension} className='login-button'>Login</button>
       }

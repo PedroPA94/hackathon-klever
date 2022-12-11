@@ -11,18 +11,24 @@
   max-width: 350px;
   background-color: var(--background);
   font-family: var(--font);
-  height: 700px;
+  height: 600px;
   padding: 1.5rem;
   border-radius: 10px;
 }
 
 .form-container__info-bar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   color: var(--white);
   padding-bottom: 1rem;
-  padding: 0 0.2rem;
+  padding: 0 1.5rem;
+}
+
+.form-container__trybecoins {
+  font-family: var(--font);
+  margin: 4px 0;
+  font-size: 1.1rem;
 }
 
 .bet-amount-container {

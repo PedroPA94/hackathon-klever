@@ -50,7 +50,7 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
     <div className='game_control__container'>
       <div className='form-container__info-bar'>
         <Login setIsLoggedIn={ setIsLoggedIn } /> 
-        <span>0.00</span>
+        <span className='form-container__trybecoins'>TrybeCoins Balance: 0.00</span>
       </div>
       <form onSubmit={ handleSubmit(onSubmit) } className="form-container" >
         <div className='buttons-container'>
