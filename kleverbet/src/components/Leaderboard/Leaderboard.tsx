@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import IScoreboard from '../../interfaces/IScoreboard';
-import { checkIcon, xIcon } from '../icons';
+import { AiOutlineCheck } from 'react-icons/ai';
+import { IoMdClose } from 'react-icons/io';
 import Statistics from '../Statistics';
 import './Leaderboard.css';
 
@@ -20,8 +21,8 @@ const Leaderboard = (_props: LeaderboardProps): React.ReactElement => {
   }
 
   const winOrLoseIcon = (won: boolean) => {
-    if(won) return checkIcon;
-    return xIcon;
+    if(won) return <AiOutlineCheck className="check-icon" />;
+    return <IoMdClose className="x-icon"/>;
   }
 
   const profitOrLossCalculator = (score: IScoreboard) => {
