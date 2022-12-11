@@ -25,6 +25,10 @@
   --gradient: linear-gradient(114.7deg, #dc3f89 31.5%, #903edd 100%);
 }
 
+.Toastify__toast-theme--dark {
+  background: var(--primary) !important;
+}
+
 .App {
   background-color: var(--background);
   width: 100%;
