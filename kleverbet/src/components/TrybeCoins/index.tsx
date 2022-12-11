@@ -49,7 +49,7 @@ const TrybeCoins = ({ containerDisplay, setContainerDisplay }: TrybeCoinsProps) 
           <span>{ `TrybeCoins: ${convertKlvToTrybeCoins(klv)}` }</span>
         </div>
         <button onClick={handleClick}>Buy TrybeCoins</button>
-        <button onClick={closePopUp}>Voltar</button>
+        <button onClick={closePopUp}>Go Back</button>
       </div>
 
     </div>
