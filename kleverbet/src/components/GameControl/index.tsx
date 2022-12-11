@@ -40,7 +40,7 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
   
   const verifyTrybeCoins = (data: number) => {
     const trybeCoins = getTrybeCoins();
-    if (trybeCoins - data <= 0) { toast.error('Insufficient Trybecoins, please make a purchase', { position: 'top-center' }) }
+    if (trybeCoins - data <= 0 && isLoggedIn) { toast.error('Insufficient Trybecoins, please make a purchase', { position: 'top-center' }) }
     return (trybeCoins - data) >= 0
   }
 
