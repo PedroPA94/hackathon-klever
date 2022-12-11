@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { getTrybeCoins, removeTrybeCoins } from '../../utils/trybeCoinsTransaction';
 import Login from '../Login';
@@ -15,8 +15,12 @@ interface GameControlProps {
 
 const GameControl = ({ setBetValue }: GameControlProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [localStorageRerender, setLocalStorageRerender] = useState(false);
 
   const trybeCoinsBalance = (getTrybeCoins()).toFixed(2);
+  useEffect(() => {
+    setLocalStorageRerender((prevState) => !prevState);
+  }, [trybeCoinsBalance])
 
   const { register, handleSubmit, formState: { errors, isValid }, setValue, getValues } = useForm<Inputs>({
     defaultValues: {
