@@ -80,12 +80,14 @@
   text-align: center;
 }
 
-.bi-check2 {
+.check-icon {
   color: green;
+  font-size: 1.4rem;
 }
 
-.bi-x {
+.x-icon {
   color: red;
+  font-size: 1.4rem;
 }
 
 .td-profit {
