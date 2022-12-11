@@ -91,6 +91,7 @@
   background-color: var(--red);
   padding: 1rem 0;
   width: 100%;
+  border-radius: 5px;
 }
 
 .form-container__cta:hover {
@@ -105,6 +106,8 @@
 
 .form-container__cta:disabled {
   background-color: gray;
+  cursor: not-allowed;
+  opacity: 0.8;
 }
 
 .form-validation {
