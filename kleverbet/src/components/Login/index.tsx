@@ -55,11 +55,11 @@ const Login = ({ setIsLoggedIn }: LoginProps): React.ReactElement => {
             </div>
             <div className='balances'>Balances:</div>
             <div className='klv_balance'>
-              <img src={KlvIcon} alt='klv icon' className='klv-icon'/> KLV: {walletBalance.toFixed(2)}
+              <img src={KlvIcon} alt='klv icon' className='klv-icon'/> KLV: {walletBalance.toLocaleString()}
             </div>
             <div className='trybecoin_balance'>
               <TbCoin />
-              {`TrybeCoins: ${trybeCoinsBalance}`}
+              {`TrybeCoins: ${Number(trybeCoinsBalance).toLocaleString()}`}
             </div>
           </div>
         : <button type='button' onClick={connectWithKleverExtension} className='login-button'>Login</button>

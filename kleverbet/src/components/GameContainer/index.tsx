@@ -4,7 +4,7 @@ import GameControl from '../GameControl';
 import IhandleGameArgs from '../../interfaces/handleGameArgs';
 import './GameContainer.css';
 import Leaderboard from '../Leaderboard/Leaderboard';
-import { toast, ToastOptions } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 
 const GameContainer = () => {
@@ -12,20 +12,16 @@ const GameContainer = () => {
   const [isGameRunning, setIsGameRunning] = useState(false);
   const [crashTime, setCrashTime] = useState(0);
   const [rerenderKey, setRerenderKey] = useState(0);
-  const toastOptions: ToastOptions = {
-    position: 'bottom-center',
-    theme: 'dark'
-  }
 
   const handleGame = ({ type, payload }: IhandleGameArgs) => {
     switch(type) {
       case 'WON':
-        toast.success(`Hooray! You won ${payload.value.toFixed(2)} TC`, toastOptions);
+        toast.success(`Hooray! You won ${payload.value.toLocaleString()} TC`, { position: 'top-center' });
         setIsGameRunning(false);
         setRerenderKey((prev) => prev + 1);
         break;
       case 'LOSS':
-        toast.warn(`Too bad! You lost ${payload.value.toFixed(2)} TC`, toastOptions);
+        toast.warn(`Too bad! You lost ${payload.value.toLocaleString()} TC`, { position: 'top-center' });
         setIsGameRunning(false);
         setRerenderKey((prev) => prev + 1);
         break;
