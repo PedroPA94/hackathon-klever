@@ -47,9 +47,14 @@
 .leaderboard-header {
   display: flex;
   align-items: center;
+  font-size: 1.1rem;
   justify-content: space-around;
   padding: 15px 50px;
   width: 100%;
+}
+
+.leaderboard-header p {
+  font-weight: 500;
 }
 
 .table-header-row {
