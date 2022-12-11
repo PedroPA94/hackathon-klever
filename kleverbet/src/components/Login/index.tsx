@@ -45,8 +45,9 @@ const Login = ({ setIsLoggedIn }: LoginProps): React.ReactElement => {
               <TrybeCoins containerDisplay={containerDisplay} setContainerDisplay={setContainerDisplay}/>
               <span onClick={ () => setContainerDisplay(true) } >Buy TrybeCoins</span>
             </div>
-            <div>
-              <img src={KlvIcon} alt='klv icon' className='klv-icon'/> KLV Balance: {walletBalance.toFixed()}
+            <div className='balances'>Balances:</div>
+            <div className='klv_balance'>
+              <img src={KlvIcon} alt='klv icon' className='klv-icon'/> KLV: {walletBalance.toFixed(2)}
             </div>
           </div>
         : <button type='button' onClick={connectWithKleverExtension} className='login-button'>Login</button>

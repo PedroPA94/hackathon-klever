@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { getTrybeCoins, removeTrybeCoins } from '../../utils/trybeCoinsTransaction';
 import Login from '../Login';
+import { TbCoin } from 'react-icons/tb';
 import './index.css'
 
 type Inputs = {
@@ -14,6 +15,8 @@ interface GameControlProps {
 
 const GameControl = ({ setBetValue }: GameControlProps) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const trybeCoinsBalance = (getTrybeCoins()).toFixed(2);
 
   const { register, handleSubmit, formState: { errors, isValid }, setValue, getValues } = useForm<Inputs>({
     defaultValues: {
@@ -35,8 +38,6 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
     setBetValue(data.betValue);
     removeTrybeCoins(data.betValue);
   };
-
-  console.log(errors);
   
   const verifyTrybeCoins = (data: number) => {
     const trybeCoins = getTrybeCoins();
@@ -47,7 +48,10 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
     <div className='game_control__container'>
       <div className='form-container__info-bar'>
         <Login setIsLoggedIn={ setIsLoggedIn } /> 
-        <span className='form-container__trybecoins'>TrybeCoins Balance: 0.00</span>
+        <span className='form-container__trybecoins'>
+          <TbCoin />
+          {` TrybeCoins: ${trybeCoinsBalance}`}
+        </span>
       </div>
       <form onSubmit={ handleSubmit(onSubmit) } className="form-container" >
         <div className='buttons-container'>

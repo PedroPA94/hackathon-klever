@@ -37,6 +37,10 @@
   font-size: 1.1rem;
 }
 
+.balances {
+  margin-bottom: 8px;
+}
+
 .trybecoins_box {
   background-color: var(--green);
   text-align: center;
@@ -45,6 +49,12 @@
   font-weight: 800;
   margin-bottom: 16px;
   cursor: pointer;
+}
+
+.klv_balance {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .klv-icon {
