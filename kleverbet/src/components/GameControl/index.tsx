@@ -43,7 +43,7 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
     if (trybeCoins - data <= 0) { toast.error('Insufficient Trybecoins, please make a purchase', { position: 'top-center' }) }
     return (trybeCoins - data) >= 0
   }
-  console.log(errors);
+
   return (
     <div className='game_control__container'>
       <div className='form-container__info-bar'>
