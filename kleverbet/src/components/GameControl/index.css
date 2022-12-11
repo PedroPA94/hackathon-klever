@@ -103,6 +103,13 @@
   transition: 0.1s;
 }
 
+.form-validation {
+  color: var(--red);
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-style: italic;
+}
+
 .buttons-container {
   display: flex;
   flex-direction: column;

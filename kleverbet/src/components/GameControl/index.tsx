@@ -18,7 +18,8 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
   const { register, handleSubmit, formState: { errors, isValid }, setValue, getValues } = useForm<Inputs>({
     defaultValues: {
       betValue: 0,
-    }
+    },
+    mode: 'onChange'
   });
 
   const doubleBetValue = ():void => {
@@ -49,10 +50,10 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
         </span>
       </div>
       <form onSubmit={ handleSubmit(onSubmit) } className="form-container" >
+        { errors.betValue && <span className='form-validation'>Invalid field</span> }
         <div className='buttons-container'>
           <div className="bet-amount-container">
             <input type="text" { ...register("betValue", { required: true, validate: (data) =>  verifyTrybeCoins(data) }) } className="bet-amount-container__place-bet-amount" />
-            { errors.betValue && <span>This field is required</span> }
             <button type="button" onClick={ halveBetValue } className="bet-amount-container__bet-option">1/2</button>
             <button type="button" onClick={ doubleBetValue } className="bet-amount-container__bet-option">2X</button>
           </div>

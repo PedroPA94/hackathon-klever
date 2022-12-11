@@ -5,6 +5,7 @@ import './header.css';
 export default function Header() {
   const [currencyValue, setcurrencyValue] = useState("KLV");
   const [showOptions, setShowOptions] = useState(false);
+  const [containerDisplay, setContainerDisplay] = useState(false);
 
   const toggleOptions = () => {
     setShowOptions(!showOptions);
