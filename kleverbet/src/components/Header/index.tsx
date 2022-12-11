@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import HowToPlay from '../HowToPlay';
-
 import './header.css';
 
 export default function Header() {
@@ -10,10 +9,6 @@ export default function Header() {
 
   const toggleOptions = () => {
     setShowOptions(!showOptions);
-  }
-
-  const showBuyTrybeCoins = () => {
-    setContainerDisplay(true);
   }
 
   return (

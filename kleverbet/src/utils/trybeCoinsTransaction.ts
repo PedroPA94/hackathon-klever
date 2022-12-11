@@ -20,4 +20,4 @@ const removeTrybeCoins = (trybeCoins: number) => {
   localStorage.setItem('trybecoins', newValue);
 }
 
-export { addTrybeCoins, removeTrybeCoins }
+export { getTrybeCoins, addTrybeCoins, removeTrybeCoins }

@@ -1,23 +1,67 @@
-.login-button {
+.login__loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+}
+
+.login-container {
   font-size: 1rem;
   font-family: var(--font);
   letter-spacing: 0.05rem;
+}
+
+.login-button {
+  font-size: 1rem;
+  font-family: var(--font);
+  background-color: var(--green);
+  text-align: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  border: 0;
+  color: var(--white);
+  width: 100%;
+  cursor: pointer;
+  font-size: 1.3rem;
+  font-weight: 800;
 }
 
 .spinner {
     animation: rotate 2s linear infinite;
 }
 
-.wallet-info {
+.balances-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 1.1rem;
+}
+
+.balances {
+  margin-bottom: 8px;
+}
+
+.trybecoins_box {
+  background-color: var(--green);
+  text-align: center;
+  padding: 12px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  cursor: pointer;
+}
+
+.klv_balance {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 }
 
 .klv-icon {
   width: 15px;
   border-radius: 50%;
 }
+
 
 @keyframes rotate {
   0% { transform: rotate(0deg);}

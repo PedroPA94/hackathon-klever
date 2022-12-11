@@ -1,11 +1,17 @@
+.game_control__container {
+  background-color: var(--background);
+  height: 700px;
+  max-width: 350px;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   max-width: 350px;
   background-color: var(--background);
   font-family: var(--font);
-  height: 700px;
+  height: 530px;
   padding: 1.5rem;
   border-right: 1px solid var(--white);
   /* border-radius: 10px; */
@@ -13,11 +19,20 @@
 
 .form-container__info-bar {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   color: var(--white);
   padding-bottom: 1rem;
-  padding: 0 0.2rem;
+  padding: 0 1.5rem;
+}
+
+.form-container__trybecoins {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font);
+  margin: 4px 0;
+  font-size: 1.1rem;
 }
 
 .bet-amount-container {
@@ -86,6 +101,13 @@
   background-color: var(--white);
   color: var(--background);
   transition: 0.1s;
+}
+
+.form-validation {
+  color: var(--red);
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-style: italic;
 }
 
 .buttons-container {
