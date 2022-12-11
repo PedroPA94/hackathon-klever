@@ -2,7 +2,8 @@
 
 .canvas {
   color: #9c58db10;
-  width: 1000px;
+  max-width: 1000px;
+  min-width: 800px;
 }
 
 .chart-container {
@@ -41,4 +42,5 @@
 
 .multiplier-container {
   font-size: 2rem;
+  font-family: var(--font);
 }

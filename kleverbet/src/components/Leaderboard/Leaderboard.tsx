@@ -1,61 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import useLocalStorage from '../../hooks/useLocalStorage';
 import IScoreboard from '../../interfaces/IScoreboard';
 import { checkIcon, xIcon } from '../icons';
 import Statistics from '../Statistics';
 import './Leaderboard.css';
 
-const Leaderboard = (): React.ReactElement => {
-  const [scoreboard, setScoreboard] = useState<IScoreboard[]>([])
+interface LeaderboardProps {
+  key?: number,
+}
 
-  const mock: IScoreboard[] = [{
-    walletAddress: 1,
-    id: 1,
-    bet: 1000,
-    multiplier: 1,
-    won: true,
-  }, {
-    walletAddress: 1,
-    id: 1,
-    bet: 100,
-    multiplier: 1.5,
-    won: true,
-  }, {
-    walletAddress: 1,
-    id: 1,
-    bet: 1,
-    multiplier: 1,
-    won: false,
-  }, {
-    walletAddress: 1,
-    id: 1,
-    bet: 1,
-    multiplier: 1,
-    won: false,
-  }, {
-    walletAddress: 1,
-    id: 1,
-    bet: 1,
-    multiplier: 1,
-    won: false,
-  }, {
-    walletAddress: 1,
-    id: 1,
-    bet: 1,
-    multiplier: 1,
-    won: false,
-  }, {
-    walletAddress: 1,
-    id: 1,
-    bet: 1,
-    multiplier: 1,
-    won: false,
-  },{
-    walletAddress: 1,
-    id: 1,
-    bet: 1,
-    multiplier: 1.5,
-    won: false,
-  }]
+const Leaderboard = (_props: LeaderboardProps): React.ReactElement => {
+  const [scoreboard] = useLocalStorage<IScoreboard[]>('leaderboard', []);
 
   const profitCalculator = () => {
     return scoreboard.reduce((acc, score) => {
@@ -73,17 +28,6 @@ const Leaderboard = (): React.ReactElement => {
     if(score.won) return score.bet * score.multiplier;
     return -score.bet;
   }
-
-  useEffect(() => {
-    const scoreboardJson: string | null = (localStorage.getItem('leaderboard'));
-    setScoreboard(mock);
-    if(scoreboardJson) {
-      const parsedScoreboard: IScoreboard[] = JSON.parse(scoreboardJson);
-      setScoreboard(parsedScoreboard);
-    }
-
-  }, [])
-  
 
   return (
     <section className="leaderboard-section">
