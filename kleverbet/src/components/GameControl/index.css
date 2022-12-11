@@ -1,7 +1,9 @@
 .game_control__container {
   background-color: var(--background);
-  max-width: 350px;
+  max-width: 382px;
   height: 100%;
+  border-right: 2px solid var(--white);
+  padding-right: 2rem;
 }
 
 .form-container {
@@ -12,7 +14,6 @@
   background-color: var(--background);
   font-family: var(--font);
   padding: 1.5rem;
-  border-right: 1px solid var(--white);
   height: 40vh;
 }
 
