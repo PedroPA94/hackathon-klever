@@ -8,15 +8,17 @@ import "./TrybeCoins.css";
 interface TrybeCoinsProps {
   containerDisplay: boolean,
   setContainerDisplay: Function,
+  setUpdateTrybeCoins: Function, 
 }
 
-const TrybeCoins = ({ containerDisplay, setContainerDisplay }: TrybeCoinsProps) => {
-  const [klv, setKlv] = useState(0);
+const TrybeCoins = ({ containerDisplay, setContainerDisplay, setUpdateTrybeCoins }: TrybeCoinsProps) => {
+  const [klv, setKlv] = useState(0); // klevercoins
   const [trybeCoins, setTrybeCoins] = useState(0);
   const queryClient = useQueryClient();
 
   useEffect(() => {
     trybeCoinsTransaction.addTrybeCoins(trybeCoins);
+    setUpdateTrybeCoins((prevState:boolean) => !prevState)
   }, [trybeCoins])
 
   const convertKlvToTrybeCoins = (amount: number): number => {
