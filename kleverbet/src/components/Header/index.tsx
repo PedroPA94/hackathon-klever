@@ -1,19 +1,13 @@
-import React, { ChangeEvent, ReactEventHandler, useState } from 'react'
+import React, { useState } from 'react'
 import Login from '../Login';
-import TrybeCoins from '../TrybeCoins';
 import './header.css';
 
 export default function Header() {
   const [currencyValue, setcurrencyValue] = useState("KLV");
   const [showOptions, setShowOptions] = useState(false);
-  const [containerDisplay, setContainerDisplay] = useState(false);
 
   const toggleOptions = () => {
     setShowOptions(!showOptions);
-  }
-
-  const showBuyTrybeCoins = () => {
-    setContainerDisplay(true);
   }
 
   return (
@@ -25,8 +19,6 @@ export default function Header() {
       <div className="nav">
         <a href="https://klever.io/en" target="_blank">Download the Exchange App</a>
         <Login />
-        <span  onClick={showBuyTrybeCoins} >Buy TrybeCoins</span>
-        <TrybeCoins containerDisplay={containerDisplay} setContainerDisplay={setContainerDisplay}/>
         <div>
           <button onClick={ () => toggleOptions()}>EN | { currencyValue } 
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"  className="bi bi-chevron-down" viewBox="0 0 16 16">

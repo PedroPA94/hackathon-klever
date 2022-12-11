@@ -4,6 +4,7 @@ import useWalletBalance from '../../hooks/useWalletBalance';
 import './Login.css'
 import { ImSpinner2 } from 'react-icons/im'
 import KlvIcon from '../../assets/klv_icon.avif'
+import TrybeCoins from '../TrybeCoins';
 
 const testNetProvider: IProvider = {
   node: 'https://node.testnet.klever.finance',
@@ -11,6 +12,7 @@ const testNetProvider: IProvider = {
 };
 
 const Login = (): React.ReactElement => {
+  const [containerDisplay, setContainerDisplay] = useState(false);
   const [address, setAddress] = useState<undefined | string>(undefined)
   const [ walletBalance, isLoading, isRefetching ] = useWalletBalance(address) as [number, boolean, boolean]
 
@@ -35,6 +37,8 @@ const Login = (): React.ReactElement => {
         walletBalance !== undefined
         ? <p className='wallet-info{ data: balance, isLoading }'>
             <img src={KlvIcon} alt='klv icon' className='klv-icon'/> KLV {walletBalance.toFixed()}
+            <TrybeCoins containerDisplay={containerDisplay} setContainerDisplay={setContainerDisplay}/>
+            <span onClick={ () => setContainerDisplay(true) } >Buy TrybeCoins</span>
           </p>
         : <button onClick={connectWithKleverExtension} className='login-button'>Login</button>
       }

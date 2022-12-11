@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 
-const fetchWalletBalance = async (walletAddress: string | undefined): Promise<number> => {
+export const fetchWalletBalance = async (walletAddress: string | undefined): Promise<number> => {
   const response = await fetch(`https://api.testnet.klever.finance/address/${walletAddress}`);
   const result = await response.json();
   return result.data.account.balance;
