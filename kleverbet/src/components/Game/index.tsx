@@ -14,6 +14,8 @@ import { Chart } from "react-chartjs-2";
 import IhandleGameArgs from '../../interfaces/handleGameArgs';
 import './Game.css';
 import { addTrybeCoins } from '../../utils/trybeCoinsTransaction';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import IScoreboard from '../../interfaces/IScoreboard';
 
 ChartJS.register(
   CategoryScale,
@@ -55,7 +57,8 @@ const Game = ({ crashTime, betValue, callback, isGameRunning }: GameProps ): Rea
   const [chartData, setChartData] = useState<ChartData<"bar">>({
     datasets: []
   });
-  const [stopBtnDisabled, setStopBtnDisabled] = useState(false)
+  const [stopBtnDisabled, setStopBtnDisabled] = useState(false);
+  const [leaderboard, setLeaderboard] = useLocalStorage<IScoreboard[]>('leaderboard', []);
 
   const stopCounter = () => {
     clearInterval(intervalRef.current);
@@ -93,8 +96,17 @@ const Game = ({ crashTime, betValue, callback, isGameRunning }: GameProps ): Rea
   }, [isGameRunning]);
 
   useEffect(() => {
+    if (!isGameRunning) return;
     const loseGame = (): void => {
       stopCounter();
+      setLeaderboard([
+        ...leaderboard, 
+        {
+          bet: betValue,
+          multiplier: Number(gameState.multiplier.toFixed(2)),
+          won: false,
+        }
+      ]);
       callback({ type: 'LOSS', payload: { multiplier: gameState.multiplier, value: betValue }});
     }
     
@@ -105,7 +117,15 @@ const Game = ({ crashTime, betValue, callback, isGameRunning }: GameProps ): Rea
     setStopBtnDisabled(true)
     stopCounter();
     const prizeValue = gameState.multiplier * betValue;
-    addTrybeCoins(prizeValue)
+    setLeaderboard([
+      ...leaderboard, 
+      {
+        bet: betValue,
+        multiplier: Number(gameState.multiplier.toFixed(2)),
+        won: true,
+      }
+    ]);
+    addTrybeCoins(prizeValue);
     callback({ type: 'WON', payload: { multiplier: gameState.multiplier, value: prizeValue }});
   }
 
