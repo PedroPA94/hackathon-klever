@@ -6,12 +6,16 @@ import { ImSpinner2 } from 'react-icons/im'
 import KlvIcon from '../../assets/klv_icon.avif'
 import TrybeCoins from '../TrybeCoins';
 
+interface LoginProps {
+  setIsLoggedIn(args: boolean): void;
+}
+
 const testNetProvider: IProvider = {
   node: 'https://node.testnet.klever.finance',
   api: 'https://api.testnet.klever.finance',
 };
 
-const Login = (): React.ReactElement => {
+const Login = ({ setIsLoggedIn }: LoginProps): React.ReactElement => {
   const [containerDisplay, setContainerDisplay] = useState(false);
   const [address, setAddress] = useState<undefined | string>(undefined)
   const [ walletBalance, isLoading, isRefetching ] = useWalletBalance(address) as [number, boolean, boolean]
@@ -26,7 +30,8 @@ const Login = (): React.ReactElement => {
     await web.initialize();
     const address = web.getWalletAddress();
 
-    setAddress(address)
+    setAddress(address);
+    setIsLoggedIn(true);
   }
 
   if (isLoading || isRefetching) return <ImSpinner2 className='spinner' />
@@ -35,12 +40,12 @@ const Login = (): React.ReactElement => {
     <div className='login-button'>
       {
         walletBalance !== undefined
-        ? <p className='wallet-info{ data: balance, isLoading }'>
+        ? <div className='wallet-info{ data: balance, isLoading }'>
             <img src={KlvIcon} alt='klv icon' className='klv-icon'/> KLV {walletBalance.toFixed()}
             <TrybeCoins containerDisplay={containerDisplay} setContainerDisplay={setContainerDisplay}/>
             <span onClick={ () => setContainerDisplay(true) } >Buy TrybeCoins</span>
-          </p>
-        : <button onClick={connectWithKleverExtension} className='login-button'>Login</button>
+          </div>
+        : <button type='button' onClick={connectWithKleverExtension} className='login-button'>Login</button>
       }
     </div>
   )

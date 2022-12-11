@@ -1,7 +1,13 @@
+.game_control__container {
+  background-color: var(--background);
+  height: 700px;
+  max-width: 350px;
+}
+
 .form-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   max-width: 350px;
   background-color: var(--background);
   font-family: var(--font);

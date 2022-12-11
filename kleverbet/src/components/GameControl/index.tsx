@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { removeTrybeCoins } from '../../utils/trybeCoinsTransaction';
+import { getTrybeCoins, removeTrybeCoins } from '../../utils/trybeCoinsTransaction';
 import Login from '../Login';
-import TrybeCoins from '../TrybeCoins';
 import './index.css'
 
 type Inputs = {
@@ -14,6 +13,8 @@ interface GameControlProps {
 }
 
 const GameControl = ({ setBetValue }: GameControlProps) => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const { register, handleSubmit, formState: { errors, isValid }, setValue, getValues } = useForm<Inputs>({
     defaultValues: {
       betValue: 0,
@@ -35,24 +36,34 @@ const GameControl = ({ setBetValue }: GameControlProps) => {
     removeTrybeCoins(data.betValue);
   };
 
+  console.log(errors);
+  
+  const verifyTrybeCoins = (data: number) => {
+    const trybeCoins = getTrybeCoins();
+    if ((trybeCoins - data) < 0) {
+      return false;
+    }
+    return true;
+  }
+
   return (
-    <>
+    <div className='game_control__container'>
+      <div className='form-container__info-bar'>
+        <Login setIsLoggedIn={ setIsLoggedIn } /> 
+        <span>0.00</span>
+      </div>
       <form onSubmit={ handleSubmit(onSubmit) } className="form-container" >
-        <div className='form-container__info-bar'>
-          <span>0.00</span>
-          <Login /> 
-        </div>
         <div className='buttons-container'>
           <div className="bet-amount-container">
-            <input type="text" { ...register("betValue", { required: true }) } className="bet-amount-container__place-bet-amount" />
+            <input type="text" { ...register("betValue", { required: true, validate: (data) =>  verifyTrybeCoins(data) }) } className="bet-amount-container__place-bet-amount" />
             { errors.betValue && <span>This field is required</span> }
             <button type="button" onClick={ halveBetValue } className="bet-amount-container__bet-option">1/2</button>
             <button type="button" onClick={ doubleBetValue } className="bet-amount-container__bet-option">2X</button>
           </div>
-          <button type="submit" disabled={ !isValid } className="form-container__cta" >BET</button>
+          <button type="submit" disabled={ !isLoggedIn || !isValid } className="form-container__cta" >BET</button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
