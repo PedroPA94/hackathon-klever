@@ -30,6 +30,7 @@ const TrybeCoins = ({ containerDisplay, setContainerDisplay, setUpdateTrybeCoins
 
   const closePopUp = () => {
     setContainerDisplay(false);
+    queryClient.invalidateQueries('balance');
   }
 
   return (

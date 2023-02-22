@@ -9,9 +9,17 @@ const fetchWalletBalance = async (walletAddress: string | undefined): Promise<nu
 const useWalletBalance = (walletAddress: string | undefined): (number | undefined | boolean)[] => {
   const { data: balance, isLoading, isRefetching } = useQuery('balance', () => fetchWalletBalance(walletAddress), 
     {
-       enabled: !!walletAddress,
-       select: (data) => data / 1000000
-    })
+      enabled: !!walletAddress,
+      select: (data) => data / 1000000,
+      onSuccess: (data) => {
+        // Return the updated balance value
+        return data / 1000000;
+      },
+      onError: () => {
+        // Return undefined as the balance value in case of an error
+        return undefined;
+      }
+    });
   return [ balance, isLoading, isRefetching ]
 }
 
