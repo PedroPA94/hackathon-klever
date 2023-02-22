@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 
 const fetchWalletBalance = async (walletAddress: string | undefined): Promise<number> => {
+  if (walletAddress === 'free play') return 1000000
   const response = await fetch(`https://api.testnet.klever.finance/address/${walletAddress}`);
   const result = await response.json();
   return result.data.account.balance;

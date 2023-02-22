@@ -7,6 +7,7 @@ import KlvIcon from '../../assets/klv_icon.avif'
 import TrybeCoins from '../TrybeCoins';
 import { getTrybeCoins } from '../../utils/trybeCoinsTransaction';
 import { TbCoin } from 'react-icons/tb';
+import * as trybeCoinsTransaction from "../../utils/trybeCoinsTransaction";
 
 interface LoginProps {
   setIsLoggedIn(args: boolean): void;
@@ -38,6 +39,12 @@ const Login = ({ setIsLoggedIn }: LoginProps): React.ReactElement => {
     setIsLoggedIn(true);
   }
 
+  const handleFreePlay = () => {
+    setAddress('free play');
+    trybeCoinsTransaction.addTrybeCoins(100);
+    setIsLoggedIn(true);
+  }
+
   if (isLoading || isRefetching) return <div className='login__loading'><ImSpinner2 className='spinner' /></div>
 
   return (
@@ -62,7 +69,11 @@ const Login = ({ setIsLoggedIn }: LoginProps): React.ReactElement => {
               {`TrybeCoins: ${Number(trybeCoinsBalance).toLocaleString()}`}
             </div>
           </div>
-        : <button type='button' onClick={connectWithKleverExtension} className='login-button'>Login</button>
+        : 
+          <div>
+            <button type='button' onClick={connectWithKleverExtension} className='login-button'>Login</button>
+            <button type='button' onClick={handleFreePlay} className='login-button'>Free play</button>
+          </div>
       }
     </div>
   )
