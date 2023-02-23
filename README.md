@@ -20,7 +20,7 @@ Os arquivos em que trabalhamos estão em `/kleverbet/src`.
  - Hook customizado useWalletBalance (React Query)
  - Integração com a extensão Klever Wallet
  - Componente de Login
- - Lógica de Trybecoins
+ - Lógica de TrybeCoins
  - Notificações Toast
  - Parte do CSS
 
@@ -33,6 +33,15 @@ Os arquivos em que trabalhamos estão em `/kleverbet/src`.
  - React Hook Form
  - React Charts
  - Vite
+ 
+</details>
+
+<details>
+<summary><strong>Como rodar</strong></summary>
+
+ - Faça o clone do repositório
+ - Dentro de `/kleverbet`, instale as dependências com `npm install`
+ - Dentro de `/kleverbet`, rode a aplicação com `npm run dev`
  
 </details>
 
