@@ -1,5 +1,44 @@
 # 🔆 <strong>Boas vindas ao repositório do Hackathon T22!</strong>
 
+### <strong>Sobre o projeto</strong>
+
+<p align=center>
+  <img src=https://user-images.githubusercontent.com/75266925/220795568-c7be2db9-2608-4f27-8cc3-cf3b9b41948d.png alt=Kleverbet width=70% />
+</p>
+
+Esse projeto foi desenvolvido durante o Hackathon da [Klever Exchange](https://klever.io/en) junto com a [Trybe](https://www.betrybe.com/), ocorrido entre 10 e 11 de dezembro de 2022.
+
+A aplicação é um jogo de apostas estilo _crash_, onde o jogador aposta uma quantia e deve optar pelo momento correto de parar a sua aposta, correndo o risco de perder tudo. Caso pare antes de o jogo dar _crash_, o jogador recebe o que apostou multiplicado pelo valor do jogo - quanto mais ele rodar antes de parar, maior o valor.
+
+O jogo está integrado à extensão Klever Wallet, permitindo que o jogador utilize Klever (KLV) em sua carteira para comprar TrybeCoins e apostar. Também é possível jogar sem ter a extensão ou uma conta na Klever.
+
+Feito em parceria com [@ArthurVianna96](https://github.com/ArthurVianna96), [@DanubioRafa](https://github.com/DanubioRafa), [@erik-ymmt](https://github.com/erik-ymmt) e [@ThiagoBarbosaDev](https://github.com/ThiagoBarbosaDev).
+
+Os arquivos em que trabalhamos estão em `/kleverbet/src`. 
+
+<strong>Minhas principais contribuições:</strong>
+ - Hook customizado useWalletBalance (React Query)
+ - Integração com a extensão Klever Wallet
+ - Componente de Login
+ - Lógica de Trybecoins
+ - Notificações Toast
+ - Parte do CSS
+
+<details>
+<summary><strong>Tecnologias utilizadas</strong></summary>
+
+ - React
+ - Typescript
+ - React Query
+ - React Hook Form
+ - React Charts
+ - Vite
+ 
+</details>
+
+<details>
+<summary><strong>Detalhes do Hackathon<strong></summary>
+
 ![Hackaton T22](./img/06-LOGO.png)
 
 ## 🛑 <strong>Termos de uso</strong>
@@ -209,3 +248,5 @@ https://www.npmjs.com/package/@klever/sdk <br />
 - Todas as informações sobre como conectar via sdk 
 - :warning: Exemplo também demostrado na Demo
 </details>
+
+<details>
